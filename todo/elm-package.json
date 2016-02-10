@@ -1,8 +1,8 @@
 {
     "version": "1.0.0",
     "summary": "A Simple ToDo List module",
-    "repository": "https://github.com/user/project.git",
-    "license": "BSD3",
+    "repository": "https://github.com/maciejsmolinski/elm-playground.git",
+    "license": "MIT",
     "source-directories": [
         "."
     ],
