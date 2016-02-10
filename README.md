@@ -1,6 +1,6 @@
 # Elm Playground
 
-[Elm Language](http://elm-lang.org/) playground repository is supposed to consist of tiny projects that are easy to scan and reason about so that everybody can learn the language quickly by example. More about the project at the bottom of this readme.
+[Elm Language](http://elm-lang.org/) playground repository is supposed to consist of tiny projects that are easy to scan and reason about so that everybody can learn the language quickly by example. More about the project [at the bottom of this readme](https://github.com/maciejsmolinski/elm-playground#explanation).
 
 ## Projects Listing:
 
