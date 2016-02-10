@@ -7,7 +7,7 @@
 ### Simple Todo List
 
 * Directory: `todo/`
-* Screenshot:
+* Project:
 
 ![](http://g.recordit.co/JqIZyAy9eE.gif)
 
