@@ -9,7 +9,7 @@
 * Directory: `todo/`
 * Screenshot:
 
-![](https://cdn.pbrd.co/images/1rdaHd7k.png)
+![](http://g.recordit.co/JqIZyAy9eE.gif)
 
 ## Explanation
 
