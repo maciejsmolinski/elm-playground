@@ -2,7 +2,7 @@ module Main where
 
 import Html exposing (div, text, input, button)
 import Html.Attributes exposing (value)
-import Html.Events exposing (on, targetValue, onClick)
+import Html.Events exposing (on, onClick, targetValue)
 import String
 
 {- Action Types Enum -}
@@ -30,10 +30,12 @@ stateChangeFunction action state =
       { state | field = text }
 
     Add ->
-      if String.length state.field > 0 then
-        { state | list = state.list ++ [ state.field ] }
-      else
+      if List.member state.field state.list then
         state
+      else if String.length state.field == 0 then
+        state
+      else
+        { state | list = state.list ++ [ state.field ] }
 
     _ -> state
 
@@ -56,10 +58,11 @@ view address state =
     []
     ([ input
         [ value state.field
+        , on "input" targetValue (\str -> Signal.message address (UpdateField (toString str)))
         ]
-        []
+        [ ]
     , button
-        []
+        [ onClick address Add ]
         [ text "Add" ]
     ]
     ++ (List.map (\field -> div [] [ text field]) state.list))
