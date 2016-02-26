@@ -1,2 +1,8 @@
+node_modules/
 elm-stuff/
 elm.js
+npm-debug.log
+webpack/node_modules/
+webpack/elm-stuff/
+webpack/elm.js
+webpack/npm-debug.log

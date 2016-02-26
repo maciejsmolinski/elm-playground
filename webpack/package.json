@@ -1,0 +1,21 @@
+{
+  "name": "elm-playground",
+  "version": "0.0.1",
+  "description": "Elm Playground",
+  "main": "index.js",
+  "scripts": {
+    "setup": "npm install -g webpack webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "elm-webpack-loader": "^2.0.0"
+  },
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0"
+  }
+}
