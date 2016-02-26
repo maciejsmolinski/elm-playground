@@ -1,6 +1,6 @@
 module Main where
 
-import Html exposing (text, button, div, input, br)
+import Html exposing (text, button, div, input, br, span)
 import Html.Attributes exposing (class, type', value)
 import Html.Events exposing (onClick, on, targetValue)
 import Signal
@@ -73,6 +73,11 @@ updateState action state =
             , list  = (state.list ++ [ (state.id + 1, state.field) ])
             , field = ""
             }
+      Remove id ->
+        let
+          newList = List.filter (\(itemId, _) -> itemId /= id) state.list
+        in
+          { state | list = newList }
       Clear ->
         { state
         | list = []
@@ -90,9 +95,9 @@ model =
 view: State -> Html.Html
 view model =
   let
-    add   = [ br [] [], addTodo model ]
-    list  = List.map (\(id, name) -> div [] [text (toString id ++ ". " ++ name)]) model.list
-    clr = [ br [] [], clear ]
+    add  = [ br [] [], addTodo model ]
+    list = List.map item model.list
+    clr  = [ br [] [], clear ]
   in
     div [] (add ++ list ++ clr)
 
@@ -110,6 +115,19 @@ addTodo model =
       [ btn "Add" Add ]
     ]
 
+item: (Int, String) -> Html.Html
+item (id, name) =
+  div
+  [ class "row" ]
+  [ div
+    [ class "ten columns" ]
+    [ text name ]
+  , div
+    [ class "two columns is-right-aligned" ]
+    [ txt "╳" (Remove id) ]
+  ]
+
+
 clear: Html.Html
 clear =
   div
@@ -122,6 +140,13 @@ btn label action =
   button
   [ onClick address action ]
   [ text label ]
+
+txt: String -> Actions -> Html.Html
+txt label action =
+  span
+  [ onClick address action, class "is-actionable is-mini" ]
+  [ text label ]
+
 
 inpt: String -> Html.Html
 inpt label =
