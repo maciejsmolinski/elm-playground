@@ -88,7 +88,7 @@ updateState action state =
 
 model: Signal State
 model =
-  Signal.foldp updateState (State ("") ([]) (0)) signals
+  Signal.foldp updateState (State "" [] 0) signals
 
 
 {- View -}
