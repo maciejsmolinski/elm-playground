@@ -39,11 +39,11 @@ main =
 --
 -- getData: Task Http.Error String
 -- getData =
---   Http.get getEmail "https://randomuser.me/api/"
+  -- Http.get getEmail "https://randomuser.me/api/"
 --
--- getEmail: Json.Decoder String -> String
--- getEmail =
---   Json.at ["results", "user", "email"]
+getEmail: Json.Decoder String
+getEmail =
+  Json.at ["results", "user", "email"] Json.string
 --
 -- handleData: String -> Signal.Address Action
 -- handleData email =
