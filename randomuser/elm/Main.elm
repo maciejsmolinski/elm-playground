@@ -35,11 +35,11 @@ view model =
 main: Signal Element
 main =
   Signal.map view modelSignal
---
---
--- getData: Task Http.Error String
--- getData =
-  -- Http.get getEmail "https://randomuser.me/api/"
+
+
+getData: Task Http.Error String
+getData =
+  Http.get getEmail "https://randomuser.me/api/"
 --
 getEmail: Json.Decoder String
 getEmail =
