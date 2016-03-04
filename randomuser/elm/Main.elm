@@ -6,14 +6,13 @@ import Task exposing (Task)
 import Html exposing (text, Html)
 import Signal
 import Time
-import String
 
 type alias User =
-  { emails: List String
+  { email: String
   }
 
 type Action = NoOp
-            | UpdateEmails (List String)
+            | UpdateEmail String
 
 mailbox: Signal.Mailbox Action
 mailbox = Signal.mailbox NoOp
@@ -21,24 +20,22 @@ mailbox = Signal.mailbox NoOp
 modelUpdate: Action -> User -> User
 modelUpdate action model =
   case Debug.log "Action" action of
-    UpdateEmails emails ->
-      { model | emails = emails }
+    UpdateEmail email ->
+      { model | email = email }
     _ ->
       model
 
 modelSignal: Signal User
 modelSignal =
-  Signal.foldp modelUpdate (User [""]) mailbox.signal
+  Signal.foldp modelUpdate (User "") mailbox.signal
 
 view: User -> Html
 view model =
-  text
-    <| String.join ", " (model.emails)
+  text model.email
 
 main: Signal Html
 main =
   Signal.map view modelSignal
-
 
 getData: Task Http.Error (List String)
 getData =
@@ -52,9 +49,17 @@ getEmails =
     ("results" := Json.list email)
 
 handleData: List String -> Task a ()
-handleData email =
-    Signal.send mailbox.address (UpdateEmails email)
+handleData emails =
+    let
+      email = Maybe.withDefault "no email" (List.head emails)
+    in
+      Signal.send mailbox.address (UpdateEmail email)
 
-port runner2: Signal (Task Http.Error ())
-port runner2 =
-  Signal.map (always (Task.andThen getData handleData)) (Time.every (5 * Time.second))
+
+port refresh: Signal (Task Http.Error ())
+port refresh =
+  let
+    signal = Time.every (5 * Time.second)
+    task   = always (Task.andThen getData handleData)
+  in
+    Signal.map task signal
