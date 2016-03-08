@@ -16,7 +16,7 @@ import User exposing (User)
 {-| Application Actions
 -}
 type Action = NoOp
-            | UpdateEmail String
+            | UpdateData (String, String)
 
 {-| Application Mailbox handling signals
 -}
@@ -28,8 +28,8 @@ mailbox = Signal.mailbox NoOp
 modelUpdate: Action -> User -> User
 modelUpdate action model =
   case Debug.log "Action" action of
-    UpdateEmail email ->
-      { model | email = email }
+    UpdateData (email, picture) ->
+      { model | email = email, picture = picture }
     _ ->
       model
 
@@ -54,12 +54,12 @@ main =
 
 {-| Handle Incoming User Data from Ports via emitting signals
 -}
-handleData: List String -> Task a ()
-handleData emails =
+handleData: List (String, String) -> Task a ()
+handleData data =
     let
-      email = Maybe.withDefault "no email" (List.head emails)
+      extracted = Maybe.withDefault ("", "") (List.head data)
     in
-      Signal.send mailbox.address (UpdateEmail email)
+      Signal.send mailbox.address (UpdateData extracted)
 
 {-| Port that fires HTTP request every 30 seconds
 -}

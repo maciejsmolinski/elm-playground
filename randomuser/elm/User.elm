@@ -13,7 +13,8 @@ module User (User, render, initial, getData) where
 
 import Http
 import Task exposing (Task)
-import Html exposing (Html, div, text)
+import Html exposing (Html, div, img, text)
+import Html.Attributes exposing (src)
 import Json.Decode as Json exposing ((:=))
 
 
@@ -25,6 +26,7 @@ import Json.Decode as Json exposing ((:=))
 -}
 type alias User =
   { email: String
+  , picture: String
   }
 
 
@@ -32,24 +34,28 @@ type alias User =
 -}
 initial: User
 initial =
-  User ""
+  User "" ""
 
 
 {-| Json Decoder extracting required data
 -}
-getEmails: Json.Decoder (List String)
-getEmails =
+extractData: Json.Decoder (List (String, String))
+extractData =
   let
-    email = Json.at ["user", "email"] Json.string
+    data =
+      Json.at ["user"]
+        <| Json.object2 (,)
+            ("email" := Json.string)
+            (Json.at ["picture", "medium"] Json.string)
   in
-    ("results" := Json.list email)
+      ("results" := Json.list data)
 
 
 {-| Fire HTTP Request
 -}
-getData: Task Http.Error (List String)
+getData: Task Http.Error (List (String, String))
 getData =
-  Http.get getEmails "https://randomuser.me/api/"
+  Http.get extractData "https://randomuser.me/api/"
 
 
 {-| Render User given actual model
@@ -58,5 +64,6 @@ render: User -> Html
 render user =
   div
     []
-    [ text user.email
+    [ div [] [ img [ src user.picture ] [] ]
+    , text user.email
     ]
