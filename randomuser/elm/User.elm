@@ -27,6 +27,7 @@ import Json.Decode as Json exposing ((:=))
 type alias User =
   { email: String
   , picture: String
+  , username: String
   }
 
 
@@ -34,26 +35,27 @@ type alias User =
 -}
 initial: User
 initial =
-  User "" ""
+  User "" "" ""
 
 
 {-| Json Decoder extracting required data
 -}
-extractData: Json.Decoder (List (String, String))
+extractData: Json.Decoder (List (String, String, String))
 extractData =
   let
     data =
       Json.at ["user"]
-        <| Json.object2 (,)
+        <| Json.object3 (,,)
             ("email" := Json.string)
             (Json.at ["picture", "medium"] Json.string)
+            ("username" := Json.string)
   in
       ("results" := Json.list data)
 
 
 {-| Fire HTTP Request
 -}
-getData: Task Http.Error (List (String, String))
+getData: Task Http.Error (List (String, String, String))
 getData =
   Http.get extractData "https://randomuser.me/api/"
 
@@ -65,5 +67,6 @@ render user =
   div
     []
     [ div [] [ img [ src user.picture ] [] ]
-    , text user.email
+    , div [] [ text user.username ]
+    , div [] [ text user.email ]
     ]
