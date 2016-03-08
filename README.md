@@ -2,11 +2,9 @@
 
 [Elm Language](http://elm-lang.org/) playground repository is supposed to consist of tiny projects that are easy to scan and reason about so that everybody can learn the language quickly by example. More about the project [at the bottom of this readme](#explanation).
 
-## Prerequisites
+## Projects Listing:
 
 Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en/) must be present on your machine to play around with the projects.
-
-## Projects Listing:
 
 ### Random User API Integration
 
