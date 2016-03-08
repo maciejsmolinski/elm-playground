@@ -71,7 +71,7 @@ handleData data =
 port refresh: Signal (Task Http.Error ())
 port refresh =
   let
-    signal = Time.every (30 * Time.second)
+    signal = Time.every (90 * Time.second)
     task   = always (Task.andThen User.getData handleData)
   in
     Signal.map task signal
