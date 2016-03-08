@@ -1,8 +1,8 @@
 {
     "version": "1.0.0",
-    "summary": "helpful summary of your project, less than 80 characters",
+    "summary": "Random User API integration example using Elm Lang",
     "repository": "https://github.com/user/project.git",
-    "license": "BSD3",
+    "license": "ISC",
     "source-directories": [
         "elm",
         "."

@@ -84,7 +84,7 @@ render user =
               [ text "Joined in 2016" ]
             , div
               [ class "description" ]
-              [ text "Art Director living in New York" ]
+              [ text "Living in New York" ]
             ]
         ]
 

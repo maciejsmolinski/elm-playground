@@ -4,10 +4,13 @@
   "description": "Elm Playground",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install -g webpack webpack-dev-server",
+    "opendev": "open http://localhost:8765/webpack-dev-server/",
+    "dev": "webpack-dev-server --port 8765",
+    "prod": "webpack",
+    "setup": "npm install -g webpack webpack-dev-server && npm install && elm package install -y",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Maciej Smoliński",
   "license": "ISC",
   "dependencies": {
     "elm-webpack-loader": "^2.0.0"

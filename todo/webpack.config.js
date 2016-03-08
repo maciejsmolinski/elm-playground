@@ -6,12 +6,6 @@ module.exports = {
   module: {
     loaders: [
 
-      // {
-      //   test: /\.js$/,
-      //   exclude: [/node_modules/],
-      //   loaders: ['flowcheck'],
-      // },
-
       {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
