@@ -13,8 +13,8 @@ module User (User, render, initial, getData) where
 
 import Http
 import Task exposing (Task)
-import Html exposing (Html, div, img, text)
-import Html.Attributes exposing (src)
+import Html exposing (Html, div, img, text, span, i)
+import Html.Attributes exposing (src, class)
 import Json.Decode as Json exposing ((:=))
 
 
@@ -47,7 +47,7 @@ extractData =
       Json.at ["user"]
         <| Json.object3 (,,)
             ("email" := Json.string)
-            (Json.at ["picture", "medium"] Json.string)
+            (Json.at ["picture", "large"] Json.string)
             ("username" := Json.string)
   in
       ("results" := Json.list data)
@@ -65,8 +65,34 @@ getData =
 render: User -> Html
 render user =
   div
-    []
-    [ div [] [ img [ src user.picture ] [] ]
-    , div [] [ text user.username ]
-    , div [] [ text user.email ]
+    [ class "ui card" ]
+    [ div
+        [ class "image" ]
+        [ img [ src user.picture ] [] ]
+    , div
+        [ class "content" ]
+        [ div
+            [ class "header" ]
+            [ text user.username ]
+        , div
+            [ class "meta" ]
+            [ span
+              [ class "date" ]
+              [ text "Joined in 2016" ]
+            , div
+              [ class "description" ]
+              [ text "Art Director living in New York" ]
+            ]
+        ]
+    , div
+        [ class "extra content" ]
+        [ div
+          []
+          [ i
+            [ class "mail outline icon" ]
+            []
+          , text user.email
+          ]
+
+        ]
     ]
