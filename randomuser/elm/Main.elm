@@ -1,22 +1,30 @@
 module Main where
 
+{-| Random User Application
+
+@docs Action, handleData, mailbox, modelSignal, modelUpdate, view, main
+
+-}
+
 import Http
-import Json.Decode as Json exposing ((:=))
 import Task exposing (Task)
-import Html exposing (text, Html)
+import Html exposing (div, Html)
 import Signal
 import Time
+import User exposing (User)
 
-type alias User =
-  { email: String
-  }
-
+{-| Application Actions
+-}
 type Action = NoOp
             | UpdateEmail String
 
+{-| Application Mailbox handling signals
+-}
 mailbox: Signal.Mailbox Action
 mailbox = Signal.mailbox NoOp
 
+{-| Function responsible for updating User model based on actions
+-}
 modelUpdate: Action -> User -> User
 modelUpdate action model =
   case Debug.log "Action" action of
@@ -25,29 +33,27 @@ modelUpdate action model =
     _ ->
       model
 
+{-| Signal emitting User model every time update is made
+-}
 modelSignal: Signal User
 modelSignal =
-  Signal.foldp modelUpdate (User "") mailbox.signal
+  Signal.foldp modelUpdate User.initial mailbox.signal
 
-view: User -> Html
-view model =
-  text model.email
+{-| Application Render Function
+-}
+render: User -> Html
+render user =
+  div [] [ User.render user ]
 
+{-| Application Entry Point (renders every time signal is received)
+-}
 main: Signal Html
 main =
-  Signal.map view modelSignal
+  Signal.map render modelSignal
 
-getData: Task Http.Error (List String)
-getData =
-  Http.get getEmails "https://randomuser.me/api/"
 
-getEmails: Json.Decoder (List String)
-getEmails =
-  let
-    email = Json.at ["user", "email"] Json.string
-  in
-    ("results" := Json.list email)
-
+{-| Handle Incoming User Data from Ports via emitting signals
+-}
 handleData: List String -> Task a ()
 handleData emails =
     let
@@ -55,11 +61,12 @@ handleData emails =
     in
       Signal.send mailbox.address (UpdateEmail email)
 
-
+{-| Port that fires HTTP request every 30 seconds
+-}
 port refresh: Signal (Task Http.Error ())
 port refresh =
   let
-    signal = Time.every (5 * Time.second)
-    task   = always (Task.andThen getData handleData)
+    signal = Time.every (30 * Time.second)
+    task   = always (Task.andThen User.getData handleData)
   in
     Signal.map task signal
