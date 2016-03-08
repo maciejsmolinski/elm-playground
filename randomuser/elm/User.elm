@@ -35,7 +35,7 @@ type alias User =
 -}
 initial: User
 initial =
-  User "" "" ""
+  User "" "//placehold.it/300x300" ""
 
 
 {-| Json Decoder extracting required data
@@ -64,12 +64,15 @@ getData =
 -}
 render: User -> Html
 render user =
-  div
-    [ class "ui card" ]
-    [ div
+  let
+
+    image =
+      div
         [ class "image" ]
         [ img [ src user.picture ] [] ]
-    , div
+
+    content =
+      div
         [ class "content" ]
         [ div
             [ class "header" ]
@@ -84,15 +87,22 @@ render user =
               [ text "Art Director living in New York" ]
             ]
         ]
-    , div
-        [ class "extra content" ]
-        [ div
-          []
-          [ i
-            [ class "mail outline icon" ]
-            []
-          , text user.email
-          ]
 
-        ]
-    ]
+    extra =
+      if user.email /= "" then
+        div
+          [ class "extra content" ]
+          [ div
+            []
+            [ i
+              [ class "mail outline icon" ]
+              []
+            , text user.email
+            ]
+          ]
+      else
+        div [] []
+  in
+    div
+      [ class "ui card helpers centered-horizontally with-top-gap" ]
+      [ image, content, extra ]
