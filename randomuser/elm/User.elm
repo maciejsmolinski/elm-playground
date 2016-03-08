@@ -35,7 +35,7 @@ type alias User =
 -}
 initial: User
 initial =
-  User "" "//placehold.it/300x300" ""
+  User "..." "//placehold.it/300x300?text=loading+picture" "..."
 
 
 {-| Json Decoder extracting required data

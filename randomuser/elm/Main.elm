@@ -8,14 +8,16 @@ module Main where
 
 import Http
 import Task exposing (Task)
-import Html exposing (div, Html)
+import Html exposing (button, div, text, Html)
+import Html.Attributes exposing (class)
+import Html.Events exposing (onClick)
 import Signal
-import Time
 import User exposing (User)
 
 {-| Application Actions
 -}
 type Action = NoOp
+            | Load
             | UpdateData (String, String, String)
 
 {-| Application Mailbox handling signals
@@ -35,6 +37,9 @@ modelUpdate action model =
       , username = username
       }
 
+    Load ->
+      User.initial
+
     NoOp ->
       model
 
@@ -48,7 +53,17 @@ modelSignal =
 -}
 render: User -> Html
 render user =
-  div [] [ User.render user ]
+  let
+    nav =
+      div
+        [ class "helpers with-top-gap centered-text" ]
+        [
+          button
+            [ onClick mailbox.address Load]
+            [ text "Load" ]
+        ]
+  in
+    div [] [ User.render user, nav ]
 
 {-| Application Entry Point (renders every time signal is received)
 -}
@@ -71,7 +86,10 @@ handleData data =
 port refresh: Signal (Task Http.Error ())
 port refresh =
   let
-    signal = Time.every (90 * Time.second)
+    signal = Signal.filter
+              (\action -> action == Load)
+              NoOp
+              mailbox.signal
     task   = always (Task.andThen User.getData handleData)
   in
     Signal.map task signal
