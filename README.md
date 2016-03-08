@@ -10,7 +10,7 @@ Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en
 
 * Directory: `randomuser`
 * Setup & Run Dev: `cd randomuser && npm run setup && npm run dev`
-* Open Dev Preview: `npm run opendev` or open http://localhost:8765/webpack-dev-server/ in your browser
+* Open Dev Preview: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
 * Project:
 
 ![](http://g.recordit.co/94PCJSeeES.gif)
@@ -19,7 +19,7 @@ Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en
 
 * Directory: `todo/`
 * Setup & Run Dev: `cd todo && npm run setup && npm run dev`
-* Open Dev Preview: `npm run opendev` or open http://localhost:8765/webpack-dev-server/ in your browser
+* Open Dev Preview: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
 * Project:
 
 ![](http://g.recordit.co/fzYv2K9WMG.gif)
