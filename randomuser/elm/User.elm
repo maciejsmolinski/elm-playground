@@ -104,5 +104,5 @@ render user =
         div [] []
   in
     div
-      [ class "ui card helpers centered-horizontally with-top-gap" ]
+      [ class "ui card helpers centered-horizontally with-double-top-gap" ]
       [ image, content, extra ]
