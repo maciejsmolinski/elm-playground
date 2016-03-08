@@ -8,15 +8,17 @@ Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en
 
 ### Random User API Integration
 
-* Setup & Run Dev: `cd randomuser && npm run setup && npm run dev`
-* Open Dev Preview: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
+* Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
+* Install dependencies and run dev server: `cd randomuser && npm run setup && npm run dev`
+* View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
 
 ![](http://g.recordit.co/94PCJSeeES.gif)
 
 ### Simple Todo List
 
-* Setup & Run Dev: `cd todo && npm run setup && npm run dev`
-* Open Dev Preview: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
+* Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
+* Install dependencies and run dev server: `cd todo && npm run setup && npm run dev`
+* View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
 
 ![](http://g.recordit.co/fzYv2K9WMG.gif)
 
