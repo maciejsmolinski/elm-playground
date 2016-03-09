@@ -18,7 +18,7 @@ import User exposing (User)
 -}
 type Action = NoOp
             | Load
-            | UpdateData User
+            | UpdateFields User
 
 {-| Application Mailbox handling signals
 -}
@@ -30,7 +30,7 @@ mailbox = Signal.mailbox NoOp
 modelUpdate: Action -> User -> User
 modelUpdate action model =
   case Debug.log "Action" action of
-    UpdateData user ->
+    UpdateFields user ->
       user
 
     Load ->
@@ -70,13 +70,9 @@ main =
 
 {-| Handle Incoming User Data from Ports via emitting signals
 -}
-handleData: List User -> Task a ()
-handleData data =
-    let
-      extracted =
-        Maybe.withDefault User.initial (List.head data)
-    in
-      Signal.send mailbox.address (UpdateData extracted)
+handleData: User -> Task a ()
+handleData user =
+    Signal.send mailbox.address (UpdateFields user)
 
 {-| Port that fires HTTP request every time Load signal is emitted
 -}

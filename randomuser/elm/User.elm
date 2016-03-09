@@ -43,22 +43,24 @@ initial =
 
 {-| Json Decoder extracting required data
 -}
-extractData: Json.Decoder (List User)
+extractData: Json.Decoder User
 extractData =
   let
-    data =
+    user =
       Json.at ["user"]
         <| Json.object3 User
             ("email" := Json.string)
             (Json.at ["picture", "large"] Json.string)
             ("username" := Json.string)
   in
-      ("results" := Json.list data)
+      Json.object1
+        (Maybe.withDefault initial << List.head)
+        ("results" := Json.list user)
 
 
 {-| Fire HTTP Request
 -}
-getData: Task Http.Error (List User)
+getData: Task Http.Error User
 getData =
   Http.get extractData "https://randomuser.me/api/"
 
