@@ -65,12 +65,6 @@ main =
   Signal.map render modelSignal
 
 
-{-| Handle Incoming User Data from Ports via emitting signals
--}
-handleData: User -> Task a ()
-handleData user =
-    Signal.send mailbox.address (UpdateFields user)
-
 {-| Port that fires HTTP request every time Load signal is emitted
 -}
 port refresh: Signal (Task Http.Error ())
@@ -80,6 +74,7 @@ port refresh =
               (\action -> action == Load)
               NoOp
               mailbox.signal
-    task   = always (Task.andThen User.getData handleData)
+    handle = Signal.send mailbox.address << UpdateFields
+    task   = always (Task.andThen User.getData handle)
   in
     Signal.map task signal
