@@ -78,7 +78,7 @@ handleData data =
     in
       Signal.send mailbox.address (UpdateData extracted)
 
-{-| Port that fires HTTP request every 30 seconds
+{-| Port that fires HTTP request every time Load signal is emitted
 -}
 port refresh: Signal (Task Http.Error ())
 port refresh =
