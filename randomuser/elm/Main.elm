@@ -1,9 +1,6 @@
 module Main where
 
 {-| Random User Application
-
-@docs Action, handleData, mailbox, modelSignal, modelUpdate, view, main
-
 -}
 
 import Http
