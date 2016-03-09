@@ -29,3 +29,7 @@ This repository is meant to be a playground so that everybody can learn the lang
 Feel free to create pull requests if you find these examples useful. Also, please let me know if you find them too easy or too complex or not interesting at all.
 
 Thanks for the interest and taking your time to visit the repository!
+
+## Stay in Touch
+
+Have questions? Raise an [issue](https://github.com/maciejsmolinski/elm-playground/issues) or me on twitter: [@maciejsmolinski](https://twitter.com/maciejsmolinski)
