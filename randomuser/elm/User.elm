@@ -28,6 +28,7 @@ type alias User =
   { email: String
   , picture: String
   , username: String
+  , city: String
   }
 
 
@@ -39,6 +40,7 @@ initial =
     "..."
     "//placehold.it/300x300?text=loading+picture"
     "..."
+    "..."
 
 
 {-| Json Decoder extracting required data
@@ -48,10 +50,11 @@ extractData =
   let
     user =
       Json.at ["user"]
-        <| Json.object3 User
+        <| Json.object4 User
             ("email" := Json.string)
             (Json.at ["picture", "large"] Json.string)
             ("username" := Json.string)
+            (Json.at ["location", "city"] Json.string)
   in
       Json.object1
         (Maybe.withDefault initial << List.head)
@@ -88,8 +91,8 @@ render user =
               [ class "date" ]
               [ text "Joined in 2016" ]
             , div
-              [ class "description" ]
-              [ text "Living in New York" ]
+              [ class "description helpers capitalized" ]
+              [ text ("Living in " ++ user.city) ]
             ]
         ]
 
