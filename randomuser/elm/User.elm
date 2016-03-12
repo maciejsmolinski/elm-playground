@@ -21,7 +21,7 @@ import Json.Decode as Json exposing ((:=))
 {-| User Structure
 
   user =
-    User "email@domain.com", "http://placehold.it/200x200"
+    User "email@domain.com", "https://placehold.it/200x200"
 
 -}
 type alias User =
@@ -38,7 +38,7 @@ initial: User
 initial =
   User
     "..."
-    "//placehold.it/300x300?text=loading+picture"
+    "https://placehold.it/300x300?text=loading+picture"
     "..."
     "..."
 
