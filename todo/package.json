@@ -1,13 +1,13 @@
 {
   "name": "elm-playground",
   "version": "0.0.1",
-  "description": "Elm Playground",
+  "description": "Simple TODO List Written with Elm Lang",
   "main": "index.js",
   "scripts": {
     "opendev": "open http://localhost:8765/webpack-dev-server/",
     "dev": "webpack-dev-server --port 8765",
     "prod": "webpack",
-    "setup": "npm install -g webpack webpack-dev-server && npm install && elm package install -y",
+    "setup": "npm install --no-progress -g webpack webpack-dev-server && npm install --no-progress && elm package install -y",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Maciej Smoliński",
