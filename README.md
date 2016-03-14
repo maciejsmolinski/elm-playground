@@ -2,25 +2,29 @@
 
 [Elm Language](http://elm-lang.org/) playground repository is supposed to consist of tiny projects that are easy to scan and reason about so that everybody can learn the language quickly by example. More about the project [at the bottom of this readme](#explanation).
 
+Demos: http://elm-playground.maciejsmolinski.com/
+
 ## Projects Listing:
 
 Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en/) must be present on your machine to play around with the projects.
 
 ### Random User API Integration
 
+* Demo: http://elm-playground.maciejsmolinski.com/randomuser/
 * Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
 * Install dependencies and run dev server: `cd randomuser && npm run setup && npm run dev`
 * View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
 
-![](http://g.recordit.co/94PCJSeeES.gif)
+![](https://cdn.pbrd.co/images/2dcPR5Z8.gif)
 
 ### Simple Todo List
 
+* Demo: http://elm-playground.maciejsmolinski.com/todo/
 * Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
 * Install dependencies and run dev server: `cd todo && npm run setup && npm run dev`
 * View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
 
-![](http://g.recordit.co/fzYv2K9WMG.gif)
+![](https://cdn.pbrd.co/images/2deeSDdY.gif)
 
 ## Explanation
 
