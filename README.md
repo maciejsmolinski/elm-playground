@@ -36,4 +36,4 @@ Thanks for the interest and taking your time to visit the repository!
 
 ## Stay in Touch
 
-Have questions? Raise an [issue](https://github.com/maciejsmolinski/elm-playground/issues) or me on twitter: [@maciejsmolinski](https://twitter.com/maciejsmolinski)
+Have questions? Raise an [issue](https://github.com/maciejsmolinski/elm-playground/issues) or contact me on twitter: [@maciejsmolinski](https://twitter.com/maciejsmolinski)
