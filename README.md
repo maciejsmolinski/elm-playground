@@ -17,6 +17,16 @@ Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en
 
 ![](https://cdn.pbrd.co/images/2dcPR5Z8.gif)
 
+### Match Events (EventSource integration)
+
+* Demo: http://elm-playground.maciejsmolinski.com/match-events/
+* Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
+* Install dependencies and run dev server: `cd match-events && npm run setup && npm run dev`
+* Run node.js server that serves match events in a separate terminal window `cd match-events && node server.js`
+* View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
+
+![](https://cdn.pbrd.co/images/2hZvqpox.png)
+
 ### Simple Todo List
 
 * Demo: http://elm-playground.maciejsmolinski.com/todo/
