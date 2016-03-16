@@ -8,7 +8,9 @@ import Maybe
 import String
 
 type alias Event =
-  String
+  { code: String
+  , label: String
+  }
 
 type alias Events =
   List Event
@@ -19,14 +21,19 @@ type alias Model =
 
 type Action
   = NoOp
-  | AddEvent String
+  | AddEvent Event
 
 mailbox: Signal.Mailbox Action
 mailbox = Signal.mailbox NoOp
 
-initialModel : Model
-initialModel =
+emptyModel : Model
+emptyModel =
   Model []
+
+emptyEvent : Event
+emptyEvent =
+  Event "" ""
+
 
 signalModel : Signal Model
 signalModel =
@@ -40,7 +47,8 @@ signalModel =
     signals =
       Signal.merge portSignal mailboxSignal
   in
-    Signal.foldp updateModel initialModel signals
+    Signal.foldp updateModel emptyModel signals
+
 
 updateModel : Action -> Model -> Model
 updateModel action model =
@@ -51,34 +59,47 @@ updateModel action model =
     NoOp ->
       model
 
+
 main : Signal Html
 main =
   Signal.map view signalModel
+
 
 view : Model -> Html
 view model =
   let
     events =
-      List.map (\name -> div [] [ text name ]) model.events
+      List.map
+        (\{code, label} -> div [] [ text label ])
+        model.events
 
     lastEvent =
       model.events
         |> List.head << List.reverse
-        |> Maybe.withDefault ""
+        |> Maybe.withDefault emptyEvent
   in
     div [] [ pitch lastEvent ]
 
-pitch: String -> Html
+
+pitch: Event -> Html
 pitch lastEvent =
   let
-    contents =
-      if String.isEmpty lastEvent then
-        p [ class "pitch-empty" ] [ text "Match hasn't started yet..." ]
-      else
-        p [ class "pitch-event pulse" ] [ text lastEvent ]
-  in
-    div
-      [ class "pitch is-horizontally-centered is-centered" ]
-      [ contents ]
+    pitchClass =
+      class "pitch is-horizontally-centered is-centered"
 
-port events : Signal Event
+    emptyClass =
+      class "pitch-empty"
+
+    eventClass =
+      class "pitch-event pulse animated"
+
+    pitchContents =
+      if String.isEmpty lastEvent.label then
+        p [ emptyClass ] [ text "Match hasn't started yet..." ]
+      else
+        p [ eventClass ] [ text lastEvent.label ]
+  in
+    div [ pitchClass ] [ pitchContents ]
+
+
+port events : Signal (Event)

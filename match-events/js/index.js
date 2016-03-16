@@ -3,19 +3,26 @@ var css = require('../css/style.scss');
 
 var local = {
   Main: function (app) {
-    var sse;
-
-    sse =
+    var sse =
       helpers.sse('http://localhost:7654/events');
 
     sse.onmessage =
       function (event) {
-        var message =
-          helpers.toJSON(event.data);
+        var message = helpers.toJSON(event.data);
 
-        console.log('[SSE] Data received %o', message);
+        app.ports.events.send(message);
 
-        app.ports.events.send(message.label);
+        // This code retriggers animation on given element
+        // Reference: https://css-tricks.com/restart-css-animation/#article-header-id-0
+        helpers
+          .toArray(document.querySelectorAll('.animated'))
+          .forEach(function (element) {
+            var oldClasses = element.className;
+
+            element.className = '';
+            element.offsetWidth = element.offsetWidth;
+            element.className = oldClasses;
+          });
 
         return message;
       };
@@ -87,7 +94,7 @@ helpers.toArray(
   var app = Elm.embed(
     Elm[config.module],
     config.element,
-    { events: '' }
+    { events: { code: '', label: '' } }
   );
 
   // Once App bound to element, init local js interop
