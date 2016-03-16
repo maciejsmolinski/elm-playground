@@ -13,10 +13,12 @@
   "author": "Maciej Smoliński",
   "license": "ISC",
   "dependencies": {
-    "elm-webpack-loader": "^2.0.0"
+    "chance": "^1.0.1",
+    "express": "^4.13.4"
   },
   "devDependencies": {
     "css-loader": "^0.23.1",
+    "elm-webpack-loader": "^2.0.0",
     "node-sass": "^3.4.2",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0"
