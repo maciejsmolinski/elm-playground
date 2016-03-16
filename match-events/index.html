@@ -43,6 +43,32 @@
       .pitch-event {
         font-size: 3.5vw;
       }
+      .pulse {
+          animation: pulse 3s ease-out;
+          -webkit-animation: pulse 3s ease-out;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale3d(1, 1, 1);
+          opacity: 1;
+        }
+
+        100% {
+          transform: scale3d(1.05, 1.05, 1.05);
+          opacity: 0;
+        }
+      }
+      @-webkit-keyframes pulse {
+        0% {
+          transform: scale3d(1, 1, 1);
+          opacity: 1;
+        }
+
+        100% {
+          transform: scale3d(1.05, 1.05, 1.05);
+          opacity: 0;
+        }
+      }
     </style>
   </head>
   <body>

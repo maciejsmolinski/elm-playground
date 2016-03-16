@@ -75,7 +75,7 @@ pitch lastEvent =
       if String.isEmpty lastEvent then
         p [ class "pitch-empty" ] [ text "Match hasn't started yet..." ]
       else
-        p [ class "pitch-event" ] [ text lastEvent ]
+        p [ class "pitch-event pulse" ] [ text lastEvent ]
   in
     div
       [ class "pitch is-horizontally-centered is-centered" ]
