@@ -1,10 +1,11 @@
 module Main where
 
-import Html exposing (text, div)
+import Html exposing (text, div, p)
 import Signal
 import Html exposing (Html)
 import Html.Attributes exposing (class)
 import Maybe
+import String
 
 type alias Event =
   String
@@ -69,8 +70,15 @@ view model =
 
 pitch: String -> Html
 pitch lastEvent =
-  div
-    [ class "pitch is-horizontally-centered is-centered" ]
-    [ text lastEvent ]
+  let
+    contents =
+      if String.isEmpty lastEvent then
+        p [ class "pitch-empty" ] [ text "Match hasn't started yet..." ]
+      else
+        p [ class "pitch-event" ] [ text lastEvent ]
+  in
+    div
+      [ class "pitch is-horizontally-centered is-centered" ]
+      [ contents ]
 
 port events : Signal Event
