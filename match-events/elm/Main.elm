@@ -3,6 +3,8 @@ module Main where
 import Html exposing (text, div)
 import Signal
 import Html exposing (Html)
+import Html.Attributes exposing (class)
+import Maybe
 
 type alias Event =
   String
@@ -57,9 +59,18 @@ view model =
   let
     events =
       List.map (\name -> div [] [ text name ]) model.events
+
+    lastEvent =
+      model.events
+        |> List.head << List.reverse
+        |> Maybe.withDefault ""
   in
-    div
-      []
-      events
+    div [] [ pitch lastEvent ]
+
+pitch: String -> Html
+pitch lastEvent =
+  div
+    [ class "pitch is-horizontally-centered is-centered" ]
+    [ text lastEvent ]
 
 port events : Signal Event
