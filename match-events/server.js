@@ -27,12 +27,15 @@
     },
 
     randomResponse: function (req, res) {
-      setTimeout(function () {
-        res.write('id: ' + (+new Date()) + '\n');
-        res.write('data: ' + JSON.stringify(helpers.randomEvent) + '\n\n');
-        res.write('\n');
+      res.write('id: ' + (+new Date()) + '\n');
+      res.write('data: ' + JSON.stringify(helpers.randomEvent) + '\n\n');
+      res.write('\n');
+    },
 
+    loopRandomResponses: function (req, res) {
+      setTimeout(function () {
         helpers.randomResponse(req, res);
+        helpers.loopRandomResponses(req, res);
       }, helpers.randomTimeout);
     },
   };
@@ -58,8 +61,11 @@
     });
 
     helpers.randomResponse(req, res);
+    helpers.loopRandomResponses(req, res);
   });
 
-  app.listen(7654);
+  app.listen(7654, function () {
+    console.log('[Server] SSE Server listening on port 7654');
+  });
 
 }());
