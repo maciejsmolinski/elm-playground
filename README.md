@@ -8,6 +8,16 @@ Demos: http://elm-playground.maciejsmolinski.com/
 
 Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en/) must be present on your machine to play around with the projects.
 
+### Match Events (EventSource integration)
+
+* Demo: http://elm-playground.maciejsmolinski.com/match-events/
+* Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
+* Install dependencies and run dev server: `cd match-events && npm run setup && npm run dev`
+* Run node.js server that serves match events in a separate terminal window `cd match-events && node server.js`
+* View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
+
+![](https://cdn.pbrd.co/images/2jOEmm9Z.gif)
+
 ### Random User API Integration
 
 * Demo: http://elm-playground.maciejsmolinski.com/randomuser/

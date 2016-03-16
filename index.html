@@ -3,8 +3,14 @@
     <title>Elm Playground - Demos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" media="screen" title="Skeleton CSS" charset="utf-8">
     <style>
+      body {
+        background: #eee;
+      }
       .helpers.with-top-gap {
         margin-top: 6rem;
+      }
+      .helpers-with-top-gap.small {
+        margin-top: 3rem
       }
       .helpers.rounded {
         border-radius: 5px;
@@ -24,6 +30,12 @@
       .helpers.bordered {
         border: 1px solid #eee;
       }
+      .helpers.boxed {
+        background: #fff;
+      }
+      .helpers.bold {
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
@@ -42,17 +54,26 @@
       </div>
 
       <div class="row helpers with-top-gap">
-        <div class="six columns helpers rounded bordered centered padded">
-          <img style="max-height: 200px" src="https://cdn.pbrd.co/images/2dcPR5Z8.gif" class="helpers fit smaller" alt="Random User API Integration">
-          <p>
-            Random User API Integration <br><br>
+
+        <div class="four columns helpers rounded bordered centered padded boxed">
+          <img style="max-height: 140px" src="https://cdn.pbrd.co/images/2jOEmm9Z.gif" class="helpers fit smaller" alt="Random User API Integration">
+          <p class="helpers bold with-top-gap small">
+            Match Events <br><br>
+            <a href="match-events/index.html" class="button button-primary">OPEN</a>
+          </p>
+        </div>
+
+        <div class="four columns helpers rounded bordered centered padded boxed">
+          <img style="max-height: 140px" src="https://cdn.pbrd.co/images/2dcPR5Z8.gif" class="helpers fit smaller" alt="Random User API Integration">
+          <p class="helpers bold with-top-gap small">
+            Random Users <br><br>
             <a href="randomuser/index.html" class="button button-primary">OPEN</a>
           </p>
         </div>
 
-        <div class="six columns helpers rounded bordered centered padded">
-          <img style="max-height: 200px" src="https://cdn.pbrd.co/images/2deeSDdY.gif" class="helpers fit smaller" alt="Simple Todo List">
-          <p>
+        <div class="four columns helpers rounded bordered centered padded boxed">
+          <img style="max-height: 140px" src="https://cdn.pbrd.co/images/2deeSDdY.gif" class="helpers fit smaller" alt="Simple Todo List">
+          <p class="helpers bold with-top-gap small">
             Simple Todo List <br><br>
             <a href="todo/index.html" class="button button-primary">OPEN</a>
           </p>

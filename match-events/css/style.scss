@@ -1,0 +1,76 @@
+// Helpers
+.is-actionable {
+  cursor: pointer;
+}
+.is-right-aligned {
+  text-align: right;
+}
+.is-medium {
+  font-size: 90%;
+}
+.is-small {
+  font-size: 80%;
+}
+.is-tiny {
+  font-size: 70%;
+}
+.is-mini {
+  font-size: 60%;
+}
+.is-centered {
+  text-align: center;
+}
+.is-horizontally-centered {
+  margin: 0 auto;
+}
+
+
+// Actual Styles
+.pitch {
+  width: 80vw;
+  height: 28.3vw;
+  padding: 10vw 0 0;
+  background-image: url('https://cdn.pbrd.co/images/2hZvqpox.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-shadow: 0 0 2px #fff;
+  color: #41701D;
+}
+.pitch-empty {
+  font-size: 3.5vw;
+  transform: scale(.5);
+}
+.pitch-event {
+  font-size: 3.5vw;
+}
+
+
+// Animations
+.animated.pulse {
+  opacity: 0;
+  animation: pulse 1s ease-out;
+  -webkit-animation: pulse 1s ease-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale3d(1.05, 1.05, 1.05);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale3d(1.05, 1.05, 1.05);
+    opacity: 0;
+  }
+}
