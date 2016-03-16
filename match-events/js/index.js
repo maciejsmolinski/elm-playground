@@ -5,8 +5,6 @@ var local = {
   Main: function (app) {
     var sse;
 
-    console.log('[Local] App Main bound');
-
     sse =
       helpers.sse('http://localhost:7654/events');
 

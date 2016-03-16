@@ -23,7 +23,7 @@
     },
 
     get randomTimeout() {
-      return chance.integer({ min: 1000, max: 5000 });
+      return chance.integer({ min: 2500, max: 7500 });
     },
 
     randomResponse: function (req, res) {
