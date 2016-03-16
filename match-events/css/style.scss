@@ -48,8 +48,8 @@
 // Animations
 .animated.pulse {
   opacity: 0;
-  animation: pulse 3s ease-out;
-  -webkit-animation: pulse 3s ease-out;
+  animation: pulse 1s ease-out;
+  -webkit-animation: pulse 1s ease-out;
 }
 
 @keyframes pulse {
