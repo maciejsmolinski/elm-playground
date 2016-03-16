@@ -8,15 +8,6 @@ Demos: http://elm-playground.maciejsmolinski.com/
 
 Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en/) must be present on your machine to play around with the projects.
 
-### Random User API Integration
-
-* Demo: http://elm-playground.maciejsmolinski.com/randomuser/
-* Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
-* Install dependencies and run dev server: `cd randomuser && npm run setup && npm run dev`
-* View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
-
-![](https://cdn.pbrd.co/images/2dcPR5Z8.gif)
-
 ### Match Events (EventSource integration)
 
 * Demo: http://elm-playground.maciejsmolinski.com/match-events/
@@ -26,6 +17,15 @@ Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en
 * View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
 
 ![](https://cdn.pbrd.co/images/2jOEmm9Z.gif)
+
+### Random User API Integration
+
+* Demo: http://elm-playground.maciejsmolinski.com/randomuser/
+* Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
+* Install dependencies and run dev server: `cd randomuser && npm run setup && npm run dev`
+* View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
+
+![](https://cdn.pbrd.co/images/2dcPR5Z8.gif)
 
 ### Simple Todo List
 
