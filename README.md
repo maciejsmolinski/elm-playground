@@ -25,7 +25,7 @@ Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en
 * Run node.js server that serves match events in a separate terminal window `cd match-events && node server.js`
 * View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
 
-![](https://cdn.pbrd.co/images/2hZvqpox.png)
+![](https://cdn.pbrd.co/images/2jOEmm9Z.gif)
 
 ### Simple Todo List
 
