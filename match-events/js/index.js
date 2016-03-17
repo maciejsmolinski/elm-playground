@@ -3,45 +3,30 @@ var css = require('../css/style.scss');
 
 var local = {
   Main: function (app) {
-    var sse =
-      helpers.sse('http://localhost:7654/events');
+    var sse = new Worker('js/sse.js');
 
-    sse.onmessage =
-      function (event) {
-        var message = helpers.toJSON(event.data);
+    sse.postMessage(true);
 
-        app.ports.events.send(message);
+    sse.addEventListener('message', function (message) {
+      app.ports.events.send(message.data);
 
-        // This code retriggers animation on given element
-        // Reference: https://css-tricks.com/restart-css-animation/#article-header-id-0
-        helpers
-          .toArray(document.querySelectorAll('.animated'))
-          .forEach(function (element) {
-            var oldClasses = element.className;
+      // This code retriggers animation on given element
+      // Reference: https://css-tricks.com/restart-css-animation/#article-header-id-0
+      helpers
+        .toArray(document.querySelectorAll('.animated'))
+        .forEach(function (element) {
+          var oldClasses = element.className;
 
-            element.className = '';
-            element.offsetWidth = element.offsetWidth;
-            element.className = oldClasses;
-          });
+          element.className = '';
+          element.offsetWidth = element.offsetWidth;
+          element.className = oldClasses;
+        });
+    });
 
-        return message;
-      };
   },
 };
 
 var helpers = {
-
-  sse: function (endpoint) {
-    return new EventSource(endpoint);
-  },
-
-  toJSON: function (string) {
-    try {
-      return JSON.parse(string);
-    } catch (_) {
-      return {};
-    }
-  },
 
   toArray: function (data) {
     return [].slice.call(data);
