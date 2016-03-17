@@ -123,7 +123,7 @@ item (id, name) =
     [ class "ten columns" ]
     [ text name ]
   , div
-    [ class "two columns is-right-aligned" ]
+    [ class "two columns helpers is-right-aligned" ]
     [ txt "╳" (Remove id) ]
   ]
 
@@ -144,7 +144,7 @@ btn label action =
 txt: String -> Actions -> Html.Html
 txt label action =
   span
-  [ onClick address action, class "is-actionable is-mini" ]
+  [ onClick address action, class "helpers is-actionable is-mini" ]
   [ text label ]
 
 
