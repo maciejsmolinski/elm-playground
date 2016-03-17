@@ -11,5 +11,13 @@
     "node-sass": "^3.4.2",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maciejsmolinski/elm-playground.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maciejsmolinski/elm-playground/issues"
+  },
+  "homepage": "https://github.com/maciejsmolinski/elm-playground#readme"
 }
