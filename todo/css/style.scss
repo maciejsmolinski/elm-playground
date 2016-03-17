@@ -1,18 +1,32 @@
-.is-actionable {
+body {
+  background: #eee;
+}
+
+// Helpers
+.helpers.with-top-gap {
+  margin-top: 5rem;
+}
+.helpers.with-top.gap.small {
+  margin-top: 3rem;
+}
+.helpers.centered {
+  text-align: center;
+}
+.helpers.is-actionable {
   cursor: pointer;
 }
-.is-right-aligned {
+.helpers.is-right-aligned {
   text-align: right;
 }
-.is-medium {
+.helpers.is-medium {
   font-size: 90%;
 }
-.is-small {
+.helpers.is-small {
   font-size: 80%;
 }
-.is-tiny {
+.helpers.is-tiny {
   font-size: 70%;
 }
-.is-mini {
+.helpers.is-mini {
   font-size: 60%;
 }
