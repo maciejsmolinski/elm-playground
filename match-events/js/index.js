@@ -3,7 +3,16 @@ var css = require('../css/style.scss');
 
 var local = {
   Main: function (app) {
-    var sse = new Worker('js/sse.js');
+    var sse;
+
+    // Web Worker Generated Events.
+    // Enabled by default so no server is required to run the demo
+    sse = new Worker('js/workerevents.js');
+
+    // Server Sent Events.
+    // Require `node server.js` to run in the background
+    // Uncomment to use them:
+    // sse = new Worker('js/sse.js');
 
     sse.postMessage(true);
 
