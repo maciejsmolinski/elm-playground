@@ -12,9 +12,9 @@ Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en
 
 * Demo: http://elm-playground.maciejsmolinski.com/match-events/
 * Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
-* Install dependencies and run dev server: `cd match-events && npm run setup && npm run dev`
+* Install all dependencies, compile and run server: `make matchevents` (or if already installed `make serve-matchevents`)
+* View the project [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in browser
 * If you want to use `EventSource`, run node.js server that serves match events in a separate terminal window `cd match-events && node server.js` and uncomment `sse = new Worker('js/sse.js');` in `js/index.js` file to use Server Sent Events by the application
-* View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
 
 ![](https://cdn.pbrd.co/images/2jOEmm9Z.gif)
 
@@ -22,8 +22,8 @@ Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en
 
 * Demo: http://elm-playground.maciejsmolinski.com/randomuser/
 * Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
-* Install dependencies and run dev server: `cd randomuser && npm run setup && npm run dev`
-* View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
+* Install all dependencies, compile and run server: `make randomuser` (or if already installed `make serve-randomuser`)
+* View the project [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in browser
 
 ![](https://cdn.pbrd.co/images/2dcPR5Z8.gif)
 
@@ -31,8 +31,8 @@ Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en
 
 * Demo: http://elm-playground.maciejsmolinski.com/todo/
 * Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
-* Install dependencies and run dev server: `cd todo && npm run setup && npm run dev`
-* View the project: `npm run opendev` or open [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in your browser
+* Install all dependencies, compile and run server: `make todo` (or if already installed `make serve-todo`)
+* View the project [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in browser
 
 ![](https://cdn.pbrd.co/images/2deeSDdY.gif)
 
