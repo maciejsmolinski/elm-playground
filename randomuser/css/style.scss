@@ -1,10 +1,19 @@
+body {
+  background: #eee;
+}
+
+// Helpers
 .helpers.centered-horizontally {
   margin: 0 auto !important;
 }
+.helpers.centered,
 .helpers.centered-text {
   text-align: center !important;
 }
 .helpers.with-top-gap {
+  margin-top: 5rem !important;
+}
+.helpers.with-top-gap.small {
   margin-top: 3rem !important;
 }
 .helpers.with-double-top-gap {

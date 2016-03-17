@@ -1,26 +1,36 @@
+body {
+  background: #eee;
+}
+
 // Helpers
-.is-actionable {
+.helpers.with-top-gap {
+  margin-top: 5rem;
+}
+.helpers.is-actionable {
   cursor: pointer;
 }
-.is-right-aligned {
+.helpers.is-right-aligned {
   text-align: right;
 }
-.is-medium {
-  font-size: 90%;
-}
-.is-small {
-  font-size: 80%;
-}
-.is-tiny {
-  font-size: 70%;
-}
-.is-mini {
-  font-size: 60%;
-}
-.is-centered {
+.helpers.centered {
   text-align: center;
 }
-.is-horizontally-centered {
+.helpers.is-medium {
+  font-size: 90%;
+}
+.helpers.is-small {
+  font-size: 80%;
+}
+.helpers.is-tiny {
+  font-size: 70%;
+}
+.helpers.is-mini {
+  font-size: 60%;
+}
+.helpers.is-centered {
+  text-align: center;
+}
+.helpers.is-horizontally-centered {
   margin: 0 auto;
 }
 

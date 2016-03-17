@@ -49,7 +49,7 @@ render user =
   let
     nav =
       div
-        [ class "helpers with-top-gap centered-text" ]
+        [ class "helpers with-top-gap small centered-text" ]
         [
           button
             [ onClick mailbox.address Load]

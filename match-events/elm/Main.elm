@@ -85,7 +85,7 @@ pitch: Event -> Html
 pitch lastEvent =
   let
     pitchClass =
-      class "pitch is-horizontally-centered is-centered"
+      class "pitch helpers is-horizontally-centered is-centered"
 
     emptyClass =
       class "pitch-empty"
