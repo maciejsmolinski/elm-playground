@@ -1,5 +1,18 @@
-$background-color: #fff;
-
-body {
-  background: $background-color;
+.is-actionable {
+  cursor: pointer;
+}
+.is-right-aligned {
+  text-align: right;
+}
+.is-medium {
+  font-size: 90%;
+}
+.is-small {
+  font-size: 80%;
+}
+.is-tiny {
+  font-size: 70%;
+}
+.is-mini {
+  font-size: 60%;
 }

@@ -3,19 +3,10 @@
   "version": "0.0.1",
   "description": "Simple TODO List Written with Elm Lang",
   "main": "index.js",
-  "scripts": {
-    "opendev": "open http://localhost:8765/webpack-dev-server/",
-    "dev": "webpack-dev-server --port 8765",
-    "prod": "webpack",
-    "setup": "npm install --no-progress -g webpack webpack-dev-server && npm install --no-progress && elm package install -y",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Maciej Smoliński",
   "license": "ISC",
-  "dependencies": {
-    "elm-webpack-loader": "^2.0.0"
-  },
   "devDependencies": {
+    "elm-webpack-loader": "^2.0.0",
     "css-loader": "^0.23.1",
     "node-sass": "^3.4.2",
     "sass-loader": "^3.1.2",
