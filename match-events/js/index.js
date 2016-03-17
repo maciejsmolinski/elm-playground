@@ -3,45 +3,39 @@ var css = require('../css/style.scss');
 
 var local = {
   Main: function (app) {
-    var sse =
-      helpers.sse('http://localhost:7654/events');
+    var sse;
 
-    sse.onmessage =
-      function (event) {
-        var message = helpers.toJSON(event.data);
+    // Web Worker Generated Events.
+    // Enabled by default so no server is required to run the demo
+    sse = new Worker('js/workerevents.js');
 
-        app.ports.events.send(message);
+    // Server Sent Events.
+    // Require `node server.js` to run in the background
+    // Uncomment to use them:
+    // sse = new Worker('js/sse.js');
 
-        // This code retriggers animation on given element
-        // Reference: https://css-tricks.com/restart-css-animation/#article-header-id-0
-        helpers
-          .toArray(document.querySelectorAll('.animated'))
-          .forEach(function (element) {
-            var oldClasses = element.className;
+    sse.postMessage(true);
 
-            element.className = '';
-            element.offsetWidth = element.offsetWidth;
-            element.className = oldClasses;
-          });
+    sse.addEventListener('message', function (message) {
+      app.ports.events.send(message.data);
 
-        return message;
-      };
+      // This code retriggers animation on given element
+      // Reference: https://css-tricks.com/restart-css-animation/#article-header-id-0
+      helpers
+        .toArray(document.querySelectorAll('.animated'))
+        .forEach(function (element) {
+          var oldClasses = element.className;
+
+          element.className = '';
+          element.offsetWidth = element.offsetWidth;
+          element.className = oldClasses;
+        });
+    });
+
   },
 };
 
 var helpers = {
-
-  sse: function (endpoint) {
-    return new EventSource(endpoint);
-  },
-
-  toJSON: function (string) {
-    try {
-      return JSON.parse(string);
-    } catch (_) {
-      return {};
-    }
-  },
 
   toArray: function (data) {
     return [].slice.call(data);
