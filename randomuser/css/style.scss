@@ -1,5 +1,15 @@
-$background-color: #fff;
-
-body {
-  background: $background-color;
+.helpers.centered-horizontally {
+  margin: 0 auto !important;
+}
+.helpers.centered-text {
+  text-align: center !important;
+}
+.helpers.with-top-gap {
+  margin-top: 3rem !important;
+}
+.helpers.with-double-top-gap {
+  margin-top: 6rem !important;
+}
+.helpers.capitalized {
+  text-transform: capitalize !important;
 }
