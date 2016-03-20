@@ -1,0 +1,23 @@
+{
+  "name": "elm-playground",
+  "version": "0.0.1",
+  "description": "Match Events (EventSource integration)",
+  "main": "index.js",
+  "author": "Maciej Smoliński",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "elm-webpack-loader": "^2.0.0",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maciejsmolinski/elm-playground.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maciejsmolinski/elm-playground/issues"
+  },
+  "homepage": "https://github.com/maciejsmolinski/elm-playground#readme"
+}
