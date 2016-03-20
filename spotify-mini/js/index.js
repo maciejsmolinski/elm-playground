@@ -3,10 +3,22 @@ var css = require('../css/style.scss');
 
 var local = {
   Main: function (app) {
-    // var sse = new Worker('js/worker.js');
-    // sse.addEventListener('message', function (message) { app.ports.events.send(message.data); })
-    // sse.postMessage(true);
-    console.log('App Main Ready %s', app);
+    var sse = new Worker('js/worker.js');
+
+    // Log Messages to console
+    sse.addEventListener('message', function (message) {
+      console.log('[Worker] Received "%s" with %o', message.data.type, message.data.payload);
+    });
+
+    // Dispatch to Elm application
+    sse.addEventListener('message', function (message) {
+      // app.ports.events.send(message.data);
+    });
+
+    sse.postMessage({
+      type:    'albums',
+      payload: 'Dub FX',
+    });
   },
 };
 
