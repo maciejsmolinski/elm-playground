@@ -89,5 +89,15 @@ matchevents: install-matchevents serve-matchevents
 
 spotifymini: install-spotifymini serve-spotifymini
 
+clean:
+	rm -rf node_modules && \
+	rm -rf todo/node_modules && \
+	rm -rf todo/js/bundle.js && \
+	rm -rf randomuser/node_modules && \
+	rm -rf randomuser/js/bundle.js && \
+	rm -rf match-events/node_modules && \
+	rm -rf match-events/js/bundle.js && \
+	rm -rf spotify-mini/node_modules && \
+	rm -rf spotify-mini/js/bundle.js \
 
 # .PHONY: install install-todo install-randomuser install-matchevents todo randomuser matchevents
