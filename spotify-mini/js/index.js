@@ -10,6 +10,63 @@ var local = {
       console.log('[Worker] Received "%s" with %o', message.data.type, message.data.payload);
     });
 
+    // Albums Handler
+    sse.addEventListener('message', function (message) {
+      if (message.data.type !== 'albums') {
+        return;
+      }
+
+      message.data.payload.albums.items
+      .map(function (album) {
+        return album.id;
+      })
+      .forEach(function (albumId) {
+        sse.postMessage({
+          type:    'tracks',
+          payload: albumId,
+        });
+      });
+
+    });
+
+    // Tracks Handler
+    sse.addEventListener('message', function (message) {
+      if (message.data.type !== 'tracks') {
+        return;
+      }
+
+      message.data.payload.tracks.items
+      .map(function (track) {
+        return {
+          name:    track.name,
+          preview: track.preview_url,
+          cover:   (message.data.payload.images[0] ||
+                   { url: 'http://placehold.it/640x640?text=Cover' })
+                   .url,
+        };
+      })
+      .forEach(function (track) {
+        var container = document.createElement('div');
+        var title     = document.createElement('h4');
+        var audio     = document.createElement('audio');
+        var cover     = document.createElement('img');
+
+        container.style = 'margin-top: 3em';
+        title.innerText = track.name;
+        audio.src       = track.preview;
+        audio.controls  = 'controls';
+        cover.src       = track.cover;
+        cover.width     = 200;
+        cover.height    = 200;
+
+        container.appendChild(title);
+        container.appendChild(cover);
+        container.appendChild(audio);
+
+        document.body.appendChild(container);
+      });
+    });
+
     // Dispatch to Elm application
     sse.addEventListener('message', function (message) {
       // app.ports.events.send(message.data);

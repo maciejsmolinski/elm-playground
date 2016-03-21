@@ -13,4 +13,11 @@ var envelopes = {
       payload: results,
     };
   },
+
+  tracks: function (results) {
+    return {
+      type:    'tracks',
+      payload: results,
+    };
+  },
 };
