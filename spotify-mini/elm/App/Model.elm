@@ -5,14 +5,17 @@ import Search.Model exposing (Search)
 import App.Mailbox
 import App.Action exposing (Action(NoOp))
 
+
 type alias App =
-  { trackList: TrackList
-  , search: Search
+  { trackList : TrackList
+  , search : Search
   }
+
 
 initial : App
 initial =
   App TrackList.Model.initial Search.Model.initial
+
 
 update : Action -> App -> App
 update action app =
@@ -20,7 +23,10 @@ update action app =
     NoOp ->
       app
 
+
 signal : Signal App
 signal =
   Signal.foldp
-    update initial App.Mailbox.signal
+    update
+    initial
+    App.Mailbox.signal
