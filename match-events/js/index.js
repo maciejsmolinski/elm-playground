@@ -85,8 +85,7 @@ helpers.toArray(
     );
   }
 
-  var app = Elm.embed(
-    Elm[config.module],
+  var app = Elm[config.module].embed(
     config.element,
     { events: { code: '', label: '' } }
   );
