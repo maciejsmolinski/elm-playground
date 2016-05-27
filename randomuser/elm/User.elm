@@ -16,6 +16,7 @@ import Task exposing (Task)
 import Html exposing (Html, div, img, text, span, i)
 import Html.Attributes exposing (src, class)
 import Json.Decode as Json exposing ((:=))
+import Date
 
 
 {-| User Structure
@@ -29,6 +30,7 @@ type alias User =
   , picture: String
   , username: String
   , city: String
+  , joined: Int
   }
 
 {-| User Messages
@@ -47,7 +49,7 @@ init =
 -}
 empty : User
 empty =
-  User "..." "https://placehold.it/300x300?text=loading+picture" "..." "..."
+  User "..." "https://placehold.it/300x300?text=loading+picture" "..." "..." 0
 
 {-| Function responsible for updating User model based on actions
 -}
@@ -72,6 +74,16 @@ view user =
         [ class "image" ]
         [ img [ src user.picture ] [] ]
 
+    joinedYear =
+      case user.joined of
+        0 ->
+          "..."
+
+        date ->
+          toString
+            <| Date.year
+            <| Date.fromTime (date * 1000)
+
     content =
       div
         [ class "content" ]
@@ -82,7 +94,7 @@ view user =
             [ class "meta" ]
             [ span
               [ class "date" ]
-              [ text "Joined in 2016" ]
+              [ text ("Joined in " ++ joinedYear) ]
             , div
               [ class "description helpers capitalized" ]
               [ text ("Living in " ++ user.city) ]
@@ -116,11 +128,12 @@ extractData: Json.Decoder User
 extractData =
   let
     user =
-      Json.object4 User
+      Json.object5 User
         ("email" := Json.string)
         (Json.at ["picture", "large"] Json.string)
         (Json.at ["login", "username"] Json.string)
         (Json.at ["location", "city"] Json.string)
+        ("registered" := Json.int)
   in
       Json.object1
         (Maybe.withDefault empty << List.head)
