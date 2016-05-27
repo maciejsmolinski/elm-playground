@@ -2,13 +2,12 @@ module Main exposing (main)
 
 {-| Random User Application
 -}
-
--- import Http
 import Html exposing (button, div, text, Html)
 import Html.Attributes exposing (class)
 import Html.App
 import Html.Events exposing (onClick)
-import User exposing (User, Msg(Load))
+import User exposing (User, Msg)
+
 
 
 main : Program Never

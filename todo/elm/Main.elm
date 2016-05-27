@@ -7,7 +7,8 @@ import Html.App
 import String
 import Json.Decode as Json
 
-{- Main -}
+
+
 main : Program Never
 main =
   Html.App.program
@@ -17,14 +18,14 @@ main =
     , subscriptions = \_ -> Sub.none
     }
 
-{- Model -}
+
 type alias Model =
   { field: String
   , list: List (Int, String)
   , id: Int
   }
 
-{- Msg -}
+
 type Msg
   = UpdateField String
   | Remove Int
@@ -33,48 +34,49 @@ type Msg
   | NoOp
 
 
-{- Initial Model -}
-init : ( Model, Cmd Msg )
+init : (Model, Cmd Msg)
 init =
-  ((Model "" [] 0), Cmd.none )
+  (empty, Cmd.none)
 
-{- Update Model -}
-update : Msg -> Model -> ( Model, Cmd Msg )
+
+empty : Model
+empty =
+  (Model "" [] 0)
+
+
+update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-  let
-    debug = Debug.log "Action" msg
-  in
-    case msg of
-      UpdateField name ->
-        ({ model | field = name }, Cmd.none)
-      Add ->
-        let
-          members = List.map (snd) model.list
-        in
-          if String.isEmpty model.field then
-            (model, Cmd.none)
-          else if List.member model.field members then
-            (model, Cmd.none)
-          else
-            ({ model
-            | id    = model.id + 1
-            , list  = (model.list ++ [ (model.id + 1, model.field) ])
-            , field = ""
-            }, Cmd.none)
-      Remove id ->
-        let
-          newList = List.filter (\(itemId, _) -> itemId /= id) model.list
-        in
-          ({ model | list = newList }, Cmd.none)
-      Clear ->
-        ({ model
-        | list = []
-        , id = 0
-        }, Cmd.none)
-      _ ->
-        (model, Cmd.none)
+  case Debug.log "Message" msg of
+    UpdateField name ->
+      ({ model | field = name }, Cmd.none)
+    Add ->
+      let
+        members = List.map (snd) model.list
+      in
+        if String.isEmpty model.field then
+          (model, Cmd.none)
+        else if List.member model.field members then
+          (model, Cmd.none)
+        else
+          ({ model
+          | id    = model.id + 1
+          , list  = (model.list ++ [ (model.id + 1, model.field) ])
+          , field = ""
+          }, Cmd.none)
+    Remove id ->
+      let
+        newList = List.filter (\(itemId, _) -> itemId /= id) model.list
+      in
+        ({ model | list = newList }, Cmd.none)
+    Clear ->
+      ({ model
+      | list = []
+      , id = 0
+      }, Cmd.none)
+    _ ->
+      (model, Cmd.none)
 
-{- View -}
+
 view : Model -> Html Msg
 view model =
   let
@@ -83,7 +85,6 @@ view model =
     clr  = [ br [] [], clear ]
   in
     div [] (add ++ list ++ clr)
-
 
 
 {- Html Helpers -}
@@ -98,6 +99,7 @@ addTodo model =
       [ class "two columns" ]
       [ btn "Add" Add ]
     ]
+
 
 item : (Int, String) -> Html Msg
 item (id, name) =
@@ -125,11 +127,13 @@ btn label action =
   [ onClick action ]
   [ text label ]
 
+
 txt : String -> Msg -> Html Msg
 txt label action =
   span
   [ onClick action, class "helpers is-actionable is-mini" ]
   [ text label ]
+
 
 inpt : String -> Html Msg
 inpt label =

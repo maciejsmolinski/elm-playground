@@ -8,6 +8,7 @@ import Json.Decode as Json exposing ((:=))
 import Date
 
 
+
 type alias User =
   { email: String
   , picture: String
@@ -33,10 +34,10 @@ init =
 
 
 update : Msg -> User -> (User, Cmd Msg)
-update action model =
-  case Debug.log "Action" action of
-    UpdateFields user ->
-      (user, Cmd.none)
+update msg model =
+  case Debug.log "Message" msg of
+    UpdateFields fields ->
+      (fields, Cmd.none)
 
     Load ->
       init
