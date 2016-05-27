@@ -1,4 +1,4 @@
-module User (User, render, initial, getData) where
+module User exposing (User, Msg(..), init, update, view)
 
 {-| User Module
 
@@ -31,47 +31,40 @@ type alias User =
   , city: String
   }
 
-
-{-| Returns initial empty User model
+{-| User Messages
 -}
-initial: User
-initial =
-  User
-    "..."
-    "https://placehold.it/300x300?text=loading+picture"
-    "..."
-    "..."
+type Msg = NoOp
+          | Load
+          | UpdateFields User
 
-
-{-| Json Decoder extracting required data
+{-| Returns initial Model
 -}
-extractData: Json.Decoder User
-extractData =
-  let
-    user =
-      Json.at ["user"]
-        <| Json.object4 User
-            ("email" := Json.string)
-            (Json.at ["picture", "large"] Json.string)
-            ("username" := Json.string)
-            (Json.at ["location", "city"] Json.string)
-  in
-      Json.object1
-        (Maybe.withDefault initial << List.head)
-        ("results" := Json.list user)
+init : (User, Cmd Msg)
+init =
+  (empty, getUser)
 
-
-{-| Fire HTTP Request
+{-| Returns empty User
 -}
-getData: Task Http.Error User
-getData =
-  Http.get extractData "https://randomuser.me/api/"
+empty : User
+empty =
+  User "..." "https://placehold.it/300x300?text=loading+picture" "..." "..."
 
-
-{-| Render User given actual model
+{-| Function responsible for updating User model based on actions
 -}
-render: User -> Html
-render user =
+update : Msg -> User -> (User, Cmd Msg)
+update action model =
+  case Debug.log "Action" action of
+    UpdateFields user ->
+      (user, Cmd.none)
+
+    Load ->
+      init
+
+    NoOp ->
+      (model, Cmd.none)
+
+view : User -> Html Msg
+view user =
   let
 
     image =
@@ -114,3 +107,28 @@ render user =
     div
       [ class "ui card helpers centered-horizontally with-double-top-gap" ]
       [ image, content, extra ]
+
+
+
+{-| Json Decoder extracting required data
+-}
+extractData: Json.Decoder User
+extractData =
+  let
+    user =
+      Json.object4 User
+        ("email" := Json.string)
+        (Json.at ["picture", "large"] Json.string)
+        (Json.at ["login", "username"] Json.string)
+        (Json.at ["location", "city"] Json.string)
+  in
+      Json.object1
+        (Maybe.withDefault empty << List.head)
+        ("results" := Json.list user)
+
+
+{-| Fire HTTP Request
+-}
+getUser: Cmd Msg
+getUser =
+  Task.perform (always NoOp) UpdateFields (Http.get extractData "https://randomuser.me/api/")
