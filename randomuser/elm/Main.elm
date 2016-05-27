@@ -10,6 +10,7 @@ import Html.App
 import Html.Events exposing (onClick)
 import User exposing (User, Msg(Load))
 
+
 main : Program Never
 main =
   Html.App.program
@@ -18,6 +19,7 @@ main =
     , update = User.update
     , subscriptions = \_ -> Sub.none
     }
+
 
 view : User -> Html User.Msg
 view model =
