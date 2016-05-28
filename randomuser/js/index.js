@@ -51,8 +51,7 @@ helpers.toArray(
     );
   }
 
-  Elm.embed(
-    Elm[config.module],
+  Elm[config.module].embed(
     config.element
   );
 });

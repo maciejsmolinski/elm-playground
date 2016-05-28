@@ -1,29 +1,32 @@
-module Main where
+module Main exposing (main)
 
-import Html exposing (text, button, div, input, br, span)
+import Html exposing (Html, text, button, div, input, br, span)
 import Html.Attributes exposing (class, type', value)
-import Html.Events exposing (onClick, on, targetValue)
-import Signal
+import Html.Events exposing (onClick, on, onInput, targetValue)
+import Html.App
 import String
-import Keyboard
+import Json.Decode as Json
 
 
-{- Main -}
-main: Signal Html.Html
+
+main : Program Never
 main =
-  Signal.map view model
+  Html.App.program
+    { init = init
+    , view = view
+    , update = update
+    , subscriptions = \_ -> Sub.none
+    }
 
 
-{- State -}
-type alias State =
+type alias Model =
   { field: String
   , list: List (Int, String)
   , id: Int
   }
 
 
-{- Actions -}
-type Actions
+type Msg
   = UpdateField String
   | Remove Int
   | Add
@@ -31,68 +34,50 @@ type Actions
   | NoOp
 
 
-{- Mailbox -}
-mailbox: Signal.Mailbox Actions
-mailbox = Signal.mailbox NoOp
-
-{address, signal} = mailbox
-
-signals: Signal Actions
-signals =
-  let
-    enter = Keyboard.enter
-          |> Signal.filter identity True
-          |> Signal.map (always Add)
-    actions = signal
-  in
-    Signal.merge enter actions
+init : (Model, Cmd Msg)
+init =
+  (empty, Cmd.none)
 
 
+empty : Model
+empty =
+  (Model "" [] 0)
 
 
-{- Model (state that reacts to signals) -}
-updateState: Actions -> State -> State
-updateState action state =
-  let
-    debug = Debug.log "Action" action
-  in
-    case action of
-      UpdateField name ->
-        { state | field = name }
-      Add ->
-        let
-          members = List.map (snd) state.list
-        in
-          if String.isEmpty state.field then
-            state
-          else if List.member state.field members then
-            state
-          else
-            { state
-            | id    = state.id + 1
-            , list  = (state.list ++ [ (state.id + 1, state.field) ])
-            , field = ""
-            }
-      Remove id ->
-        let
-          newList = List.filter (\(itemId, _) -> itemId /= id) state.list
-        in
-          { state | list = newList }
-      Clear ->
-        { state
-        | list = []
-        , id = 0
-        }
-      _ ->
-        state
-
-model: Signal State
-model =
-  Signal.foldp updateState (State "" [] 0) signals
+update : Msg -> Model -> (Model, Cmd Msg)
+update msg model =
+  case Debug.log "Message" msg of
+    UpdateField name ->
+      ({ model | field = name }, Cmd.none)
+    Add ->
+      let
+        members = List.map (snd) model.list
+      in
+        if String.isEmpty model.field then
+          (model, Cmd.none)
+        else if List.member model.field members then
+          (model, Cmd.none)
+        else
+          ({ model
+          | id    = model.id + 1
+          , list  = (model.list ++ [ (model.id + 1, model.field) ])
+          , field = ""
+          }, Cmd.none)
+    Remove id ->
+      let
+        newList = List.filter (\(itemId, _) -> itemId /= id) model.list
+      in
+        ({ model | list = newList }, Cmd.none)
+    Clear ->
+      ({ model
+      | list = []
+      , id = 0
+      }, Cmd.none)
+    _ ->
+      (model, Cmd.none)
 
 
-{- View -}
-view: State -> Html.Html
+view : Model -> Html Msg
 view model =
   let
     add  = [ br [] [], addTodo model ]
@@ -103,7 +88,7 @@ view model =
 
 
 {- Html Helpers -}
-addTodo: State -> Html.Html
+addTodo : Model -> Html Msg
 addTodo model =
   div
     [ class "row" ]
@@ -115,7 +100,8 @@ addTodo model =
       [ btn "Add" Add ]
     ]
 
-item: (Int, String) -> Html.Html
+
+item : (Int, String) -> Html Msg
 item (id, name) =
   div
   [ class "row" ]
@@ -128,35 +114,40 @@ item (id, name) =
   ]
 
 
-clear: Html.Html
+clear : Html Msg
 clear =
   div
     [ class "row" ]
     [ btn "Clear" Clear ]
 
 
-btn: String -> Actions -> Html.Html
+btn : String -> Msg -> Html Msg
 btn label action =
   button
-  [ onClick address action ]
+  [ onClick action ]
   [ text label ]
 
-txt: String -> Actions -> Html.Html
+
+txt : String -> Msg -> Html Msg
 txt label action =
   span
-  [ onClick address action, class "helpers is-actionable is-mini" ]
+  [ onClick action, class "helpers is-actionable is-mini" ]
   [ text label ]
 
 
-inpt: String -> Html.Html
+inpt : String -> Html Msg
 inpt label =
-  input
-  [ on
-      "input"
-      targetValue
-      (Signal.message address << UpdateField)
-  , class "u-full-width"
-  , type' "text"
-  , value label
-  ]
-  []
+  let
+    onKeyUp =
+      Json.map
+        (\keyCode -> if keyCode == 13 then Add else NoOp)
+        (Json.at ["keyCode"] Json.int)
+  in
+    input
+    [ onInput UpdateField
+    , on "keyup" onKeyUp
+    , class "u-full-width"
+    , type' "text"
+    , value label
+    ]
+    []
