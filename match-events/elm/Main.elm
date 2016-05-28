@@ -1,71 +1,69 @@
-module Main where
+module Main exposing (main)
 
 import Html exposing (text, div, p)
-import Signal
 import Html exposing (Html)
 import Html.Attributes exposing (class)
+import Html.App
 import Maybe
 import String
+import Ports exposing (addEvent)
 
 type alias Event =
   { code: String
   , label: String
   }
 
+
 type alias Events =
   List Event
+
 
 type alias Model =
   { events: Events
   }
 
-type Action
+
+type Msg
   = NoOp
   | AddEvent Event
 
-mailbox: Signal.Mailbox Action
-mailbox = Signal.mailbox NoOp
+
+main : Program Never
+main =
+  Html.App.program
+    { init = init
+    , view = view
+    , update = update
+    , subscriptions = subscriptions
+    }
+
 
 emptyModel : Model
 emptyModel =
   Model []
+
 
 emptyEvent : Event
 emptyEvent =
   Event "" ""
 
 
-signalModel : Signal Model
-signalModel =
-  let
-    portSignal =
-      Signal.map AddEvent events
-
-    mailboxSignal =
-      mailbox.signal
-
-    signals =
-      Signal.merge portSignal mailboxSignal
-  in
-    Signal.foldp updateModel emptyModel signals
+init : (Model, Cmd Msg)
+init =
+  (emptyModel, Cmd.none)
 
 
-updateModel : Action -> Model -> Model
-updateModel action model =
-  case action of
+update : Msg -> Model -> (Model, Cmd Msg)
+update msg model =
+  case Debug.log "Message" msg of
     AddEvent eventName ->
-      { model | events = model.events ++ [ eventName ] }
+      ({ model | events = model.events ++ [ eventName ] }, Cmd.none)
 
     NoOp ->
-      model
+      (model, Cmd.none)
 
 
-main : Signal Html
-main =
-  Signal.map view signalModel
-
-
-view : Model -> Html
+view : Model -> Html Msg
 view model =
   let
     events =
@@ -81,7 +79,7 @@ view model =
     div [] [ pitch lastEvent ]
 
 
-pitch: Event -> Html
+pitch : Event -> Html Msg
 pitch lastEvent =
   let
     pitchClass =
@@ -102,4 +100,6 @@ pitch lastEvent =
     div [ pitchClass ] [ pitchContents ]
 
 
-port events : Signal (Event)
+subscriptions : Model -> Sub Msg
+subscriptions model =
+  addEvent AddEvent

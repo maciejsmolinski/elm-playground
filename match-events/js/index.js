@@ -17,7 +17,7 @@ var local = {
     sse.postMessage(true);
 
     sse.addEventListener('message', function (message) {
-      app.ports.events.send(message.data);
+      app.ports.addEvent.send(message.data);
 
       // This code retriggers animation on given element
       // Reference: https://css-tricks.com/restart-css-animation/#article-header-id-0
@@ -86,8 +86,7 @@ helpers.toArray(
   }
 
   var app = Elm[config.module].embed(
-    config.element,
-    { events: { code: '', label: '' } }
+    config.element
   );
 
   // Once App bound to element, init local js interop
