@@ -14,7 +14,9 @@ var local = {
     // Uncomment to use them:
     // sse = new Worker('js/sse.js');
 
-    sse.postMessage(true);
+    setTimeout(function () {
+      sse.postMessage(true);
+    });
 
     sse.addEventListener('message', function (message) {
       app.ports.addEvent.send(message.data);
