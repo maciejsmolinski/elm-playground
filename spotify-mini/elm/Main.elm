@@ -1,15 +1,14 @@
-module Main (..) where
+module Main exposing (main)
 
-import Html exposing (Html)
+import Html.App
 import App.Model exposing (App)
 import App.View
 
-
-state : Signal App
-state =
-  App.Model.signal
-
-
-main : Signal Html
+main : Program Never
 main =
-  Signal.map App.View.render state
+  Html.App.program
+    { init = App.Model.initial
+    , view = App.View.render
+    , update = App.Model.update
+    , subscriptions = \_ -> Sub.none
+    }

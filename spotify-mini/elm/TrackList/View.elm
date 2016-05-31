@@ -1,10 +1,11 @@
-module TrackList.View (render) where
+module TrackList.View exposing (render)
 
 import TrackList.Model exposing (TrackList)
 import Html exposing (Html, div, text)
+import App.Action exposing (Action)
 
 
-render : TrackList -> Html
+render : TrackList -> Html Action
 render trackList =
   let
     trackToElement =

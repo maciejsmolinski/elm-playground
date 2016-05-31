@@ -72,9 +72,11 @@ var local = {
       // app.ports.events.send(message.data);
     });
 
-    sse.postMessage({
-      type:    'albums',
-      payload: 'Dub FX',
+    setTimeout(function () {
+      sse.postMessage({
+        type:    'albums',
+        payload: 'Dub FX',
+      });
     });
   },
 };
@@ -129,10 +131,8 @@ helpers.toArray(
     );
   }
 
-  var app = Elm.embed(
-    Elm[config.module],
-    config.element,
-    {} //Default Ports Data
+  var app = Elm[config.module].embed(
+    config.element
   );
 
   // Once App bound to element, init local js interop

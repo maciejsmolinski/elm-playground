@@ -1,4 +1,4 @@
-module Track.Model (Track, initial) where
+module Track.Model exposing (Track, initial)
 
 
 type alias Track =

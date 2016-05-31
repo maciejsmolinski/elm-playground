@@ -1,4 +1,4 @@
-module TrackList.Model (TrackList, initial) where
+module TrackList.Model exposing (TrackList, initial)
 
 import Track.Model exposing (Track)
 

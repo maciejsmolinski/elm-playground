@@ -1,12 +1,13 @@
-module App.View (render) where
+module App.View exposing (render)
 
 import App.Model exposing (App)
 import Html exposing (Html, div)
 import Search.View
 import TrackList.View
+import App.Action exposing (Action)
 
 
-render : App -> Html
+render : App -> Html Action
 render app =
   div
     []

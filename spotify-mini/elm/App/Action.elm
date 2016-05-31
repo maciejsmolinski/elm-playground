@@ -1,4 +1,4 @@
-module App.Action (Action(NoOp)) where
+module App.Action exposing (Action(NoOp))
 
 
 type Action
