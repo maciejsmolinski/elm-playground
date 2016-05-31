@@ -18,5 +18,5 @@ main =
 
 
 subscriptions : App -> Sub Action
-subscriptions trackList =
-    updateTrackList UpdateTrackList
+subscriptions _ =
+    Sub.batch [ updateTrackList UpdateTrackList ]
