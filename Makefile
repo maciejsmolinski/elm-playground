@@ -46,13 +46,13 @@ install-todo: install-globals
 		cd todo && npm install --no-progress
 
 install-randomuser: install-globals
-		cd randomuser && npm install --no-progress
+		cd randomuser && npm install --no-progress && elm package install -y
 
 install-matchevents: install-globals
-		cd match-events && npm install --no-progress
+		cd match-events && npm install --no-progress && elm package install -y
 
 install-spotifymini: install-globals
-		cd spotify-mini && npm install --no-progress
+		cd spotify-mini && npm install --no-progress && elm package install -y
 
 
 compile-todo:
