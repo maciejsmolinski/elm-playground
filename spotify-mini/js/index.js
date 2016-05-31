@@ -35,25 +35,26 @@ var local = {
         return;
       }
 
-      message.data.payload.tracks.items
+      var tracks = message.data.payload.tracks.items
       .map(function (track) {
         return {
-          name:    track.name,
-          preview: track.preview_url,
+          title:   track.name,
+          src:     track.preview_url,
           cover:   (message.data.payload.images[0] ||
                    { url: 'http://placehold.it/640x640?text=Cover' })
                    .url,
         };
-      })
-      .forEach(function (track) {
+      });
+
+      tracks.forEach(function (track) {
         var container = document.createElement('div');
         var title     = document.createElement('h4');
         var audio     = document.createElement('audio');
         var cover     = document.createElement('img');
 
         container.style = 'margin-top: 3em';
-        title.innerText = track.name;
-        audio.src       = track.preview;
+        title.innerText = track.title;
+        audio.src       = track.src;
         audio.controls  = 'controls';
         cover.src       = track.cover;
         cover.width     = 200;
