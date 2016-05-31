@@ -46,33 +46,10 @@ var local = {
         };
       });
 
-      tracks.forEach(function (track) {
-        var container = document.createElement('div');
-        var title     = document.createElement('h4');
-        var audio     = document.createElement('audio');
-        var cover     = document.createElement('img');
-
-        container.style = 'margin-top: 3em';
-        title.innerText = track.title;
-        audio.src       = track.src;
-        audio.controls  = 'controls';
-        cover.src       = track.cover;
-        cover.width     = 200;
-        cover.height    = 200;
-
-        container.appendChild(title);
-        container.appendChild(cover);
-        container.appendChild(audio);
-
-        document.body.appendChild(container);
-      });
+      app.ports.updateTrackList.send(tracks);
     });
 
-    // Dispatch to Elm application
-    sse.addEventListener('message', function (message) {
-      // app.ports.events.send(message.data);
-    });
-
+    // Init search
     setTimeout(function () {
       sse.postMessage({
         type:    'albums',
