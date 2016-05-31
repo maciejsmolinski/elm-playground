@@ -9,8 +9,7 @@ import App.Action exposing (Action)
 
 render : App -> Html Action
 render app =
-  div
-    []
-    [ Search.View.render app.search
-    , TrackList.View.render app.trackList
-    ]
+    div []
+        [ Search.View.render app.search
+        , TrackList.View.render app.trackList
+        ]

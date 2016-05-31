@@ -4,9 +4,9 @@ import Track.Model exposing (Track)
 
 
 type alias TrackList =
-  List Track
+    List Track
 
 
 initial : TrackList
 initial =
-  []
+    []

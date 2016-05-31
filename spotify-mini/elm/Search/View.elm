@@ -8,4 +8,4 @@ import App.Action exposing (Action)
 
 render : Search -> Html Action
 render _ =
-  input [ type' "search" ] []
+    input [ type' "search" ] []

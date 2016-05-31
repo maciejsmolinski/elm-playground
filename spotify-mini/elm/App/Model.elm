@@ -6,25 +6,26 @@ import App.Action exposing (Action(..))
 
 
 type alias App =
-  { trackList : TrackList
-  , search : Search
-  }
+    { trackList : TrackList
+    , search : Search
+    }
 
 
 empty : App
 empty =
-  App TrackList.Model.initial Search.Model.initial
+    App TrackList.Model.initial Search.Model.initial
 
-initial : (App, Cmd Action)
+
+initial : ( App, Cmd Action )
 initial =
-  (empty, Cmd.none)
+    ( empty, Cmd.none )
 
 
-update : Action -> App -> (App, Cmd Action)
+update : Action -> App -> ( App, Cmd Action )
 update action app =
-  case Debug.log "Message" action of
-    NoOp ->
-      (app, Cmd.none)
+    case Debug.log "Message" action of
+        NoOp ->
+            ( app, Cmd.none )
 
-    UpdateTrackList trackList ->
-      ( { app | trackList = (app.trackList ++ trackList) }, Cmd.none )
+        UpdateTrackList trackList ->
+            ( { app | trackList = (app.trackList ++ trackList) }, Cmd.none )
