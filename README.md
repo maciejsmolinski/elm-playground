@@ -8,6 +8,15 @@ Demos: http://elm-playground.maciejsmolinski.com/
 
 Please note [elm-lang](http://elm-lang.org/) and [node.js](https://nodejs.org/en/) must be present on your machine to play around with the projects.
 
+### Spotify Mini
+
+* Demo: http://elm-playground.maciejsmolinski.com/spotify-mini/
+* Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
+* Install all dependencies, compile and run server: `make spotifymini` (or if already installed `make serve-spotifymini`)
+* View the project [http://localhost:8765/webpack-dev-server/](http://localhost:8765/webpack-dev-server/) in browser
+
+![](https://placehold.it/300x200?text=Spotify+Mini)
+
 ### Match Events (WebWorkers and EventSource integration)
 
 * Demo: http://elm-playground.maciejsmolinski.com/match-events/

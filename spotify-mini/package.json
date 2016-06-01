@@ -1,7 +1,7 @@
 {
   "name": "elm-playground",
   "version": "0.0.1",
-  "description": "Simple TODO List Written with Elm Lang",
+  "description": "Match Events (EventSource integration)",
   "main": "index.js",
   "author": "Maciej Smoliński",
   "license": "ISC",
