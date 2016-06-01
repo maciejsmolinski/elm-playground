@@ -61,11 +61,13 @@ var local = {
 
     // Subscribe to search queries (debounce)
     app.ports.search.subscribe(helpers.debounce(function (query) {
+      app.ports.clearTrackList.send([]);
+
       sse.postMessage({
         type:    'albums',
         payload: query,
       });
-    }, 500));
+    }, 400));
 
   },
 };
