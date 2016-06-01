@@ -19,6 +19,7 @@ main =
 
 subscriptions : App -> Sub Action
 subscriptions _ =
-    Sub.batch [ updateTrackList UpdateTrackList
-    , clearTrackList (always ClearTrackList)
-    ]
+    Sub.batch
+        [ updateTrackList UpdateTrackList
+        , clearTrackList (always ClearTrackList)
+        ]

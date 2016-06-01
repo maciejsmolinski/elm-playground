@@ -5,6 +5,7 @@ import Search.Model exposing (Search)
 import App.Action exposing (Action(..))
 import Ports.Ports exposing (search)
 
+
 type alias App =
     { trackList : TrackList
     , search : Search
