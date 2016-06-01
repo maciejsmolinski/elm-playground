@@ -56,10 +56,35 @@ var local = {
         payload: 'Dub FX',
       });
     });
+
+    // Subscribe to search queries (debounce)
+    app.ports.search.subscribe(helpers.debounce(function (query) {
+      sse.postMessage({
+        type:    'albums',
+        payload: query,
+      });
+    }, 500));
+
   },
 };
 
 var helpers = {
+
+  debounce: function (callback, time) {
+    var timeout;
+
+    return function () {
+      var args = helpers.toArray(arguments);
+
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+
+      timeout = setTimeout(function () {
+        callback.apply(null, args);
+      }, time);
+    };
+  },
 
   toArray: function (data) {
     return [].slice.call(data);

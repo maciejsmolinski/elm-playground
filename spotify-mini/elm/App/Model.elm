@@ -3,7 +3,7 @@ module App.Model exposing (App, initial, update)
 import TrackList.Model exposing (TrackList)
 import Search.Model exposing (Search)
 import App.Action exposing (Action(..))
-
+import Ports.Ports exposing (search)
 
 type alias App =
     { trackList : TrackList
@@ -34,4 +34,4 @@ update action app =
             ( { app | trackList = (app.trackList ++ trackList) }, Cmd.none )
 
         UpdateSearch query ->
-            ( { app | search = { value = query } }, Cmd.none )
+            ( { app | search = { value = query } }, search app.search.value )
