@@ -12,4 +12,5 @@ render trackList =
         tracksElements =
             List.map Track.View.render trackList
     in
-        div [] tracksElements
+        div []
+            tracksElements

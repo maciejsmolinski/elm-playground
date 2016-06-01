@@ -1,26 +1,29 @@
 module Track.View exposing (render)
 
 import Track.Model exposing (Track)
-import Html exposing (Html, div, h4, audio, img, text)
-import Html.Attributes exposing (src, style, width, height, controls)
+import Html exposing (Html, div, h4, audio, img, text, p)
+import Html.Attributes exposing (src, style, width, height, controls, class)
 import App.Action exposing (Action)
 
 
 render : Track -> Html Action
 render track =
-    div [ style [ ( "margin-top", "3em" ) ] ]
-        [ h4 []
-            [ text track.title ]
-        , img
-            [ src track.cover
-            , width 200
-            , height 200
-            , style [ ( "display", "block" ), ( "margin", "1em auto" ) ]
+    div [ class "container helpers with-small-top-gap" ]
+        [ div [ class "row" ]
+            [ div [ class "two columns" ]
+                [ img
+                    [ src track.cover
+                    , style [ ( "max-width", "100%" ) ]
+                    ]
+                    []
+                ]
+            , div [ class "ten columns" ]
+                [ p [] [ text track.title ]
+                , audio
+                    [ src track.src
+                    , controls True
+                    ]
+                    []
+                ]
             ]
-            []
-        , audio
-            [ src track.src
-            , controls True
-            ]
-            []
         ]
