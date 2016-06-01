@@ -6,9 +6,9 @@ var local = {
     var sse = new Worker('js/worker.js');
 
     // Log Messages to console
-    sse.addEventListener('message', function (message) {
-      console.log('[Worker] Received "%s" with %o', message.data.type, message.data.payload);
-    });
+    // sse.addEventListener('message', function (message) {
+    //   console.log('[Worker] Received "%s" with %o', message.data.type, message.data.payload);
+    // });
 
     // Albums Handler
     sse.addEventListener('message', function (message) {
