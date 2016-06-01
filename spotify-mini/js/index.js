@@ -16,6 +16,8 @@ var local = {
         return;
       }
 
+      app.ports.clearTrackList.send([]);
+
       message.data.payload.albums.items
       .map(function (album) {
         return album.id;
