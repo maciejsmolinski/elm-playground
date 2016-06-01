@@ -1,4 +1,4 @@
-module Track.Model exposing (Track, initial)
+module Track.Model exposing (Track, initial, empty)
 
 
 type alias Track =
@@ -8,6 +8,11 @@ type alias Track =
     }
 
 
+empty : Track
+empty =
+    Track "" "" ""
+
+
 initial : Track
 initial =
-    Track "" "" ""
+    empty

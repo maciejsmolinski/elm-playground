@@ -1,4 +1,4 @@
-module Search.Model exposing (Search, initial)
+module Search.Model exposing (Search, initial, empty)
 
 
 type alias Search =
@@ -6,6 +6,11 @@ type alias Search =
     }
 
 
+empty : Search
+empty =
+    Search ""
+
+
 initial : Search
 initial =
-    Search ""
+    empty

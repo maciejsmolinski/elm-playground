@@ -3,9 +3,14 @@ module Search.View exposing (render)
 import Search.Model exposing (Search)
 import Html exposing (Html, input)
 import Html.Attributes exposing (type')
-import App.Action exposing (Action)
+import Html.Events exposing (onInput)
+import App.Action exposing (Action(UpdateSearch))
 
 
 render : Search -> Html Action
 render _ =
-    input [ type' "search" ] []
+    input
+        [ type' "search"
+        , onInput UpdateSearch
+        ]
+        []

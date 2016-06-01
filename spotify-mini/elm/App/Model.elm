@@ -27,5 +27,11 @@ update action app =
         NoOp ->
             ( app, Cmd.none )
 
+        ClearTrackList ->
+            ( { app | trackList = TrackList.Model.empty }, Cmd.none )
+
         UpdateTrackList trackList ->
             ( { app | trackList = (app.trackList ++ trackList) }, Cmd.none )
+
+        UpdateSearch query ->
+            ( { app | search = { value = query } }, Cmd.none )
