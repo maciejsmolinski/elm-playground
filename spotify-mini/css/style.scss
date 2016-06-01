@@ -9,6 +9,9 @@ body {
 .helpers.with-small-top-gap {
   margin-top: 2.5rem;
 }
+.helpers.is-responsive {
+  max-width: 100%;
+}
 .helpers.is-actionable {
   cursor: pointer;
 }

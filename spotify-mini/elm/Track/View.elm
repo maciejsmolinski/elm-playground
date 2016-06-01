@@ -1,8 +1,8 @@
 module Track.View exposing (render)
 
 import Track.Model exposing (Track)
-import Html exposing (Html, div, h4, audio, img, text, p)
-import Html.Attributes exposing (src, style, width, height, controls, class)
+import Html exposing (Html, div, audio, img, text, p)
+import Html.Attributes exposing (src, controls, class)
 import App.Action exposing (Action)
 
 
@@ -13,7 +13,7 @@ render track =
             [ div [ class "two columns" ]
                 [ img
                     [ src track.cover
-                    , style [ ( "max-width", "100%" ) ]
+                    , class "helpers is-responsive"
                     ]
                     []
                 ]
