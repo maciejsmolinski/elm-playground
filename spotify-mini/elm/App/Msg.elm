@@ -1,10 +1,10 @@
-module App.Action exposing (Action(..))
+module App.Msg exposing (Msg(..))
 
 import TrackList.Model exposing (TrackList)
 import Track.Model exposing (Track)
 
 
-type Action
+type Msg
     = NoOp
     | ClearTrackList
     | UpdateTrackList TrackList

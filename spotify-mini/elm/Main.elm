@@ -3,7 +3,7 @@ module Main exposing (main)
 import Html.App
 import App.Model exposing (App)
 import App.View
-import App.Action exposing (Action(UpdateTrackList, ClearTrackList))
+import App.Msg exposing (Msg(UpdateTrackList, ClearTrackList))
 import Ports.Ports exposing (updateTrackList, clearTrackList)
 
 
@@ -17,7 +17,7 @@ main =
         }
 
 
-subscriptions : App -> Sub Action
+subscriptions : App -> Sub Msg
 subscriptions _ =
     Sub.batch
         [ updateTrackList UpdateTrackList

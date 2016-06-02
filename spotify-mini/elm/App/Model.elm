@@ -3,7 +3,7 @@ module App.Model exposing (App, initial, update)
 import TrackList.Model exposing (TrackList)
 import Track.Model exposing (Track)
 import Search.Model exposing (Search)
-import App.Action exposing (Action(..))
+import App.Msg exposing (Msg(..))
 import Ports.Ports exposing (search, play)
 
 
@@ -19,12 +19,12 @@ empty =
     App TrackList.Model.initial Nothing Search.Model.initial
 
 
-initial : ( App, Cmd Action )
+initial : ( App, Cmd Msg )
 initial =
     ( empty, Cmd.none )
 
 
-update : Action -> App -> ( App, Cmd Action )
+update : Msg -> App -> ( App, Cmd Msg )
 update action app =
     case Debug.log "Message" action of
         NoOp ->

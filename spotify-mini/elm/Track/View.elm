@@ -4,10 +4,10 @@ import Track.Model exposing (Track)
 import Html exposing (Html, div, audio, img, text, p)
 import Html.Attributes exposing (src, controls, class)
 import Html.Events exposing (onClick)
-import App.Action exposing (Action(..))
+import App.Msg exposing (Msg(..))
 
 
-render : Track -> Html Action
+render : Track -> Html Msg
 render track =
     div [ class "track", onClick (PlayTrack track) ]
         [ div [ class "track-cover" ]

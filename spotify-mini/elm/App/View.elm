@@ -5,10 +5,10 @@ import Html exposing (Html, div)
 import Search.View
 import TrackList.View
 import Player.View
-import App.Action exposing (Action)
+import App.Msg exposing (Msg)
 
 
-render : App -> Html Action
+render : App -> Html Msg
 render app =
     div []
         [ Search.View.render app.search
