@@ -1,20 +1,22 @@
 module App.Model exposing (App, initial, update)
 
 import TrackList.Model exposing (TrackList)
+import Track.Model exposing (Track)
 import Search.Model exposing (Search)
 import App.Action exposing (Action(..))
-import Ports.Ports exposing (search)
+import Ports.Ports exposing (search, play)
 
 
 type alias App =
     { trackList : TrackList
+    , currentTrack : Maybe Track
     , search : Search
     }
 
 
 empty : App
 empty =
-    App TrackList.Model.initial Search.Model.initial
+    App TrackList.Model.initial Nothing Search.Model.initial
 
 
 initial : ( App, Cmd Action )
@@ -36,3 +38,6 @@ update action app =
 
         UpdateSearch query ->
             ( { app | search = { value = query } }, search app.search.value )
+
+        PlayTrack track ->
+            ( { app | currentTrack = Just track }, play True )

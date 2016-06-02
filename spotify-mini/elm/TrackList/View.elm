@@ -3,6 +3,7 @@ module TrackList.View exposing (render)
 import TrackList.Model exposing (TrackList)
 import Track.View
 import Html exposing (Html, div, text)
+import Html.Attributes exposing (class)
 import App.Action exposing (Action)
 
 
@@ -15,5 +16,5 @@ render trackList =
             else
                 [ div [] [ text "Empty search results" ] ]
     in
-        div []
+        div [ class "tracklist" ]
             tracksElements

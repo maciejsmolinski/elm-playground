@@ -69,6 +69,12 @@ var local = {
       });
     }, 400));
 
+    app.ports.play.subscribe(function () {
+      setTimeout(function () {
+        document.querySelector('audio').play();
+      }, 100);
+    });
+
   },
 };
 
