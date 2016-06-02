@@ -1,3 +1,7 @@
+@function rem ($pixels, $base: 10) {
+  @return #{$pixels / $base}rem;
+}
+
 body {
   background: #eee;
 }
@@ -42,3 +46,60 @@ body {
 
 
 // Actual Styles
+.track {
+  $widths: (
+    cover: 10%,
+    title: 90%
+  );
+
+  $colors: (
+    font: #fff
+  );
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  background: rgba(255, 255, 255, .15);
+  color: map-get($colors, 'font');
+  cursor: pointer;
+  font-size: rem(12);
+  user-select: none;
+
+  &:nth-child(2n+1) {
+    background: rgba(255, 255, 255, .10);
+
+    &:hover {
+      background: rgba(255, 255, 255, .05);
+    }
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, .075);
+  }
+
+  &-cover {
+    width: map-get($widths, 'cover');
+  }
+
+  &-title {
+    padding: 0 .5em;
+    text-align: left;
+    width: map-get($widths, 'title');
+  }
+}
+
+.tracklist {
+  $colors: (
+    backgroundStart: #774556,
+    backgroundEnd:   #974f62,
+    font:            #fff
+  );
+
+  background: linear-gradient(90deg, map-get($colors, 'backgroundStart'), map-get($colors, 'backgroundEnd'));
+  border-radius: 8px;
+  margin: 1em auto;
+  padding: 4em 0 2em;
+  width: 50%;
+}

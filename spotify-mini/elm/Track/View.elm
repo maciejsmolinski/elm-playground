@@ -9,16 +9,14 @@ import App.Action exposing (Action(..))
 
 render : Track -> Html Action
 render track =
-    div [ class "container helpers with-small-top-gap" ]
-        [ div [ class "row", onDoubleClick (PlayTrack track) ]
-            [ div [ class "one column" ]
-                [ img
-                    [ src track.cover
-                    , class "helpers is-responsive"
-                    ]
-                    []
+    div [ class "track", onDoubleClick (PlayTrack track) ]
+        [ div [ class "track-cover" ]
+            [ img
+                [ src track.cover
+                , class "helpers is-responsive"
                 ]
-            , div [ class "two columns" ]
-                [ p [] [ text track.title ] ]
+                []
             ]
+        , div [ class "track-title" ]
+            [ p [] [ text track.title ] ]
         ]
