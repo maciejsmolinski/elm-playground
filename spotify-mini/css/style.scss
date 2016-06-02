@@ -48,8 +48,9 @@ body {
 // Actual Styles
 .track {
   $widths: (
-    cover: 10%,
-    title: 90%
+    cover:    10%,
+    title:    80%,
+    duration: 10%
   );
 
   $colors: (
@@ -60,6 +61,7 @@ body {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: space-between;
 
   background: rgba(255, 255, 255, .15);
   color: map-get($colors, 'font');
@@ -87,6 +89,11 @@ body {
     padding: 0 .5em;
     text-align: left;
     width: map-get($widths, 'title');
+  }
+
+  &-duration {
+    padding: 0 .5em;
+    text-align: right;
   }
 }
 

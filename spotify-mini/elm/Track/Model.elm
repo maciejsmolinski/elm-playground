@@ -5,12 +5,13 @@ type alias Track =
     { title : String
     , cover : String
     , src : String
+    , duration : String
     }
 
 
 empty : Track
 empty =
-    Track "" "" ""
+    Track "" "" "" ""
 
 
 initial : Track
