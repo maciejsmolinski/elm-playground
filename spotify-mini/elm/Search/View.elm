@@ -4,10 +4,10 @@ import Search.Model exposing (Search)
 import Html exposing (Html, input)
 import Html.Attributes exposing (type')
 import Html.Events exposing (onInput)
-import App.Msg exposing (Msg(UpdateSearch))
+import Search.Msg as Search exposing (Msg(UpdateSearch))
 
 
-render : Search -> Html Msg
+render : Search -> Html Search.Msg
 render _ =
     input
         [ type' "search"
