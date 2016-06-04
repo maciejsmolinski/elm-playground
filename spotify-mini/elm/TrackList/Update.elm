@@ -26,6 +26,6 @@ update msg trackList =
                     List.map fst mapped
 
                 cmds =
-                    List.map snd mapped
+                    Cmd.map Track (Cmd.batch (List.map snd mapped))
             in
-                ( tracks, Cmd.map Track (Cmd.batch cmds) )
+                ( tracks, cmds )

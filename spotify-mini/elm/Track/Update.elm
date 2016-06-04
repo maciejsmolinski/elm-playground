@@ -15,5 +15,13 @@ update msg track =
             let
                 current =
                     (track == trackToPlay)
+
+                cmd =
+                    case current of
+                        True ->
+                            play current
+
+                        False ->
+                            Cmd.none
             in
-                ( { track | current = current }, play current )
+                ( { track | current = current }, cmd )
