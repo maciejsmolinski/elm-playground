@@ -8,6 +8,7 @@ import App.Msg as App exposing (Msg(..))
 import TrackList.Msg exposing (Msg(..))
 import Ports.Ports exposing (updateTrackList, clearTrackList)
 
+
 main : Program Never
 main =
     Html.App.program
