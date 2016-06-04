@@ -29,3 +29,6 @@ update action app =
                     (Search.Update.update msg app.search)
             in
                 ( { app | search = state }, Cmd.map Search cmd )
+
+        Player _ ->
+            ( app, Cmd.none )

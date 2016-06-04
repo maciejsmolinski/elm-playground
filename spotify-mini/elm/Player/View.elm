@@ -2,11 +2,11 @@ module Player.View exposing (render)
 
 import Html exposing (Html, div, audio, text)
 import Html.Attributes exposing (src, controls, class)
-import App.Msg exposing (Msg)
+import Player.Msg as Player exposing (Msg)
 import Track.Model exposing (Track)
 
 
-render : Maybe Track -> Html Msg
+render : Maybe Track -> Html Player.Msg
 render track =
     let
         source =
