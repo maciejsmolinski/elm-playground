@@ -1,12 +1,11 @@
 module App.Msg exposing (Msg(..))
 
-import TrackList.Model exposing (TrackList)
 import Track.Model exposing (Track)
+import TrackList.Msg as TrackList
 
 
 type Msg
     = NoOp
-    | ClearTrackList
-    | UpdateTrackList TrackList
+    | TrackList TrackList.Msg
     | UpdateSearch String
     | PlayTrack Track
