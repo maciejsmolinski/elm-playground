@@ -11,5 +11,9 @@ update msg track =
         NoOp ->
             ( track, Cmd.none )
 
-        PlayTrack track ->
-            ( track, play True )
+        PlayTrack trackToPlay ->
+            let
+                current =
+                    (track == trackToPlay)
+            in
+                ( { track | current = current }, play current )

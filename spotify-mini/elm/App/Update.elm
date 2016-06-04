@@ -21,6 +21,3 @@ update action app =
 
         UpdateSearch query ->
             ( { app | search = { value = query } }, search app.search.value )
-
-        PlayTrack track ->
-            ( { app | currentTrack = Just track }, play True )

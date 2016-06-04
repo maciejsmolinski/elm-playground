@@ -45,6 +45,7 @@ var local = {
           cover:   (message.data.payload.images[0] ||
                    { url: 'http://placehold.it/640x640?text=Cover' })
                    .url,
+          current: false,
           duration: (function () {
             var duration = track.duration_ms / 60000;
             var minutes  = Math.floor(duration);

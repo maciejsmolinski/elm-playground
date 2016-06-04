@@ -20,7 +20,7 @@ update msg trackList =
         Track msg ->
             let
                 mapped =
-                  List.map (Track.Update.update msg) trackList
+                    List.map (Track.Update.update msg) trackList
 
                 tracks =
                     List.map fst mapped
@@ -28,4 +28,4 @@ update msg trackList =
                 cmds =
                     List.map snd mapped
             in
-                ( tracks, Cmd.none )
+                ( tracks, Cmd.map Track (Cmd.batch cmds) )
