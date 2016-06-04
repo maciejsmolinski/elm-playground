@@ -3,7 +3,7 @@ module App.Update exposing (update)
 import App.Model exposing (App)
 import App.Msg exposing (Msg(..))
 import TrackList.Update
-import Ports.Ports exposing (search, play)
+import Ports.Ports exposing (search)
 
 
 update : Msg -> App -> ( App, Cmd Msg )
@@ -16,8 +16,12 @@ update action app =
             let
                 ( state, cmd ) =
                     TrackList.Update.update msg app.trackList
+
+                currentTrack =
+                    List.head
+                        <| List.filter (.current) state
             in
-                ( { app | trackList = state }, Cmd.none )
+                ( { app | trackList = state, currentTrack = currentTrack }, Cmd.map TrackList cmd )
 
         UpdateSearch query ->
             ( { app | search = { value = query } }, search app.search.value )
