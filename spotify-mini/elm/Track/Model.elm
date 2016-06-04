@@ -6,12 +6,13 @@ type alias Track =
     , cover : String
     , src : String
     , duration : String
+    , current : Bool
     }
 
 
 empty : Track
 empty =
-    Track "" "" "" ""
+    Track "" "" "" "" False
 
 
 initial : Track
