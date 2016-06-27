@@ -4,6 +4,7 @@ import App.Model exposing (App)
 import App.Msg exposing (Msg(..))
 import TrackList.Update
 import Search.Update
+import Routing.Update
 
 
 update : Msg -> App -> ( App, Cmd Msg )
@@ -32,3 +33,10 @@ update action app =
 
         Player _ ->
             ( app, Cmd.none )
+
+        Routing msg ->
+            let
+                ( state, cmd ) =
+                    (Routing.Update.update msg app.routing)
+            in
+                ( { app | routing = state }, Cmd.map Routing cmd )
