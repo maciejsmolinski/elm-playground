@@ -17,7 +17,7 @@ Please note [node.js](https://nodejs.org/en/) must be present on your machine to
   * To watch for filechanges and re-build run: `npm run dev` instead
 * Open the project: `npm run open`
 
-![](https://cdn.pbrd.co/images/2jOEmm9Z.gif)
+![](https://cdn.pbrd.co/images/GLAtx3p.gif)
 
 ### Random User API Integration
 
@@ -28,7 +28,7 @@ Please note [node.js](https://nodejs.org/en/) must be present on your machine to
   * To watch for filechanges and re-build run: `npm run dev` instead
 * Open the project: `npm run open`
 
-![](https://cdn.pbrd.co/images/2dcPR5Z8.gif)
+![](https://cdn.pbrd.co/images/GLAJbvI.gif)
 
 ### Simple Todo List
 
@@ -39,7 +39,7 @@ Please note [node.js](https://nodejs.org/en/) must be present on your machine to
   * To watch for filechanges and re-build run: `npm run dev` instead
 * Open the project: `npm run open`
 
-![](https://cdn.pbrd.co/images/2deeSDdY.gif)
+![](https://cdn.pbrd.co/images/GLAw54g.gif)
 
 ## Explanation
 
