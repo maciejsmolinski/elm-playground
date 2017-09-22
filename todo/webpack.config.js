@@ -10,12 +10,12 @@ module.exports = {
       {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
-        loaders: ['elm-webpack'],
+        loaders: ['elm-webpack-loader'],
       },
 
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
 
     ],
