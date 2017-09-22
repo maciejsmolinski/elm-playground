@@ -2,18 +2,17 @@ module User exposing (User, Msg(..), init, update, view)
 
 import Http
 import Task exposing (Task)
-import Html exposing (Html, div, img, text, span, i)
+import Html exposing (Html, div, img, text, span, i, br)
 import Html.Attributes exposing (src, class)
 import Json.Decode as Json exposing ((:=))
-import Date
-
+import String exposing (slice)
 
 type alias User =
     { email : String
     , picture : String
     , username : String
     , city : String
-    , joined : Int
+    , joined : String
     }
 
 
@@ -25,7 +24,7 @@ type Msg
 
 empty : User
 empty =
-    User "..." "https://placehold.it/300x300?text=loading+picture" "..." "..." 0
+    User "..." "https://placehold.it/300x300?text=loading+picture" "..." "..." "..."
 
 
 init : ( User, Cmd Msg )
@@ -53,25 +52,18 @@ view user =
             div [ class "image" ]
                 [ img [ src user.picture ] [] ]
 
-        joinedYear =
-            case user.joined of
-                0 ->
-                    "..."
-
-                date ->
-                    toString
-                        <| Date.year
-                        <| Date.fromTime (date * 1000)
+        joined = user.joined
 
         content =
             div [ class "content" ]
                 [ div [ class "header" ]
                     [ text user.username ]
+                , br [] []
                 , div [ class "meta" ]
                     [ span [ class "date" ]
-                        [ text ("Joined in " ++ joinedYear) ]
+                        [ text ("Joined in: " ++ (slice 0 4 joined)) ]
                     , div [ class "description helpers capitalized" ]
-                        [ text ("Living in " ++ user.city) ]
+                        [ text ("Based in: " ++ user.city) ]
                     ]
                 ]
 
@@ -105,7 +97,7 @@ extractData =
                 (Json.at [ "picture", "large" ] Json.string)
                 (Json.at [ "login", "username" ] Json.string)
                 (Json.at [ "location", "city" ] Json.string)
-                ("registered" := Json.int)
+                ("registered" := Json.string)
     in
         Json.object1 (Maybe.withDefault empty << List.head)
             ("results" := Json.list user)
