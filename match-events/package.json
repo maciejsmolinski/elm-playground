@@ -16,7 +16,7 @@
     "webpack": "^3.6.0"
   },
   "scripts": {
-    "setup": "npm install --no-progress; elm package install -y",
+    "postinstall": "elm package install -y",
     "build": "webpack",
     "dev": "webpack --watch",
     "open": "live-server"

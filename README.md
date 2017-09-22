@@ -12,7 +12,7 @@ Please note [node.js](https://nodejs.org/en/) must be present on your machine to
 
 * Demo: http://elm-playground.maciejsmolinski.com/match-events/
 * Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
-* Install all dependencies: `npm run setup`
+* Install all dependencies: `npm install`
 * Build the project: `npm run build`
   * To watch for filechanges and re-build run: `npm run dev` instead
 * Open the project: `npm run open`
@@ -23,7 +23,7 @@ Please note [node.js](https://nodejs.org/en/) must be present on your machine to
 
 * Demo: http://elm-playground.maciejsmolinski.com/randomuser/
 * Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
-* Install all dependencies: `npm run setup`
+* Install all dependencies: `npm install`
 * Build the project: `npm run build`
   * To watch for filechanges and re-build run: `npm run dev` instead
 * Open the project: `npm run open`
@@ -34,7 +34,7 @@ Please note [node.js](https://nodejs.org/en/) must be present on your machine to
 
 * Demo: http://elm-playground.maciejsmolinski.com/todo/
 * Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
-* Install all dependencies: `npm run setup`
+* Install all dependencies: `npm install`
 * Build the project: `npm run build`
   * To watch for filechanges and re-build run: `npm run dev` instead
 * Open the project: `npm run open`
