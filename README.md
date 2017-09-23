@@ -47,7 +47,7 @@ Demos: http://elm-playground.maciejsmolinski.com/
 
 ![](https://cdn.pbrd.co/images/GLAw54g.gif)
 
-## Explanation
+## Purpose of the repository
 
 This repository is meant to be a playground so that everybody can learn the language, break things, change things or even improve them.
 
