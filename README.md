@@ -55,6 +55,6 @@ Feel free to create pull requests if you find these examples useful. Also, pleas
 
 Thanks for the interest and taking your time to visit the repository!
 
-## Stay in Touch
+## Stay in touch
 
 Have questions? Raise an [issue](https://github.com/maciejsmolinski/elm-playground/issues) or contact me on twitter: [@maciejsmolinski](https://twitter.com/maciejsmolinski)
