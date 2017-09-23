@@ -1,43 +1,48 @@
 # Elm Playground
 
-[Elm Language](http://elm-lang.org/) playground repository is supposed to consist of tiny projects that are easy to scan and reason about so that everybody can learn the language quickly by example. More about the project [at the bottom of this readme](#explanation).
+[Elm Language](http://elm-lang.org/) playground repository is supposed to consist of tiny projects that are easy to scan and reason about so that everybody can learn the language quickly by example.
 
 Demos: http://elm-playground.maciejsmolinski.com/
 
-## Projects Listing:
+## Prerequisites
 
-Please note [node.js](https://nodejs.org/en/) must be present on your machine to play around with the examples.
+* Install [Node.js](https://nodejs.org/en/) following instructions on the website
+
+## Projects
 
 ### Match Events (WebWorkers)
 
 * Demo: http://elm-playground.maciejsmolinski.com/match-events/
-* Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
-* Install all dependencies: `npm install`
-* Build the project: `npm run build`
-  * To watch for filechanges and re-build run: `npm run dev` instead
-* Open the project: `npm run open`
+* Installation:
+  * Clone the repository with `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground/match-events`
+  * Install all dependencies with `npm install`
+  * Build the project: `npm run build`
+    * To watch for filechanges and re-build run: `npm run dev` instead
+* When done open the project with `npm run open` or simply open `index.html` in your browser
 
 ![](https://cdn.pbrd.co/images/GLAtx3p.gif)
 
 ### Random User API Integration
 
 * Demo: http://elm-playground.maciejsmolinski.com/randomuser/
-* Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
-* Install all dependencies: `npm install`
-* Build the project: `npm run build`
-  * To watch for filechanges and re-build run: `npm run dev` instead
-* Open the project: `npm run open`
+* Installation:
+  * Clone the repository with `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground/randomuser`
+  * Install all dependencies: `npm install`
+  * Build the project: `npm run build`
+    * To watch for filechanges and re-build run: `npm run dev` instead
+* When done open the project with `npm run open` or simply open `index.html` in your browser
 
 ![](https://cdn.pbrd.co/images/GLAJbvI.gif)
 
 ### Simple Todo List
 
 * Demo: http://elm-playground.maciejsmolinski.com/todo/
-* Clone the repo `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground`
-* Install all dependencies: `npm install`
-* Build the project: `npm run build`
-  * To watch for filechanges and re-build run: `npm run dev` instead
-* Open the project: `npm run open`
+* Installation:
+  * Clone the repository with `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground/todo`
+  * Install all dependencies: `npm install`
+  * Build the project: `npm run build`
+    * To watch for filechanges and re-build run: `npm run dev` instead
+* When done open the project with `npm run open` or simply open `index.html` in your browser
 
 ![](https://cdn.pbrd.co/images/GLAw54g.gif)
 
