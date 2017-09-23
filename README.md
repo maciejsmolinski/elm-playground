@@ -7,6 +7,7 @@ Demos: http://elm-playground.maciejsmolinski.com/
 ## Prerequisites
 
 * Install [Node.js](https://nodejs.org/en/) following instructions on the website
+* Install [Elm](http://elm-lang.org/) `npm install -g elm@0.17.0`
 
 ## Projects
 
