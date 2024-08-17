@@ -2,7 +2,7 @@
 
 [Elm Language](http://elm-lang.org/) playground repository is supposed to consist of tiny projects that are easy to scan and reason about so that everybody can learn the language quickly by example.
 
-Demos: http://elm-playground.maciejsmolinski.com/
+Demos: https://elm-playground.surge.sh/
 
 ## Prerequisites
 
@@ -13,7 +13,7 @@ Demos: http://elm-playground.maciejsmolinski.com/
 
 ### Match Events (WebWorkers)
 
-* Demo: http://elm-playground.maciejsmolinski.com/match-events/
+* Demo: https://elm-playground.surge.sh/match-events/
 * Installation:
   * Clone the repository with `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground/match-events`
   * Install all dependencies with `npm install`
@@ -21,11 +21,9 @@ Demos: http://elm-playground.maciejsmolinski.com/
     * To watch for filechanges and re-build run: `npm run dev` instead
 * When done open the project with `npm run open` or simply open `index.html` in your browser
 
-![](https://cdn.pbrd.co/images/GLAtx3p.gif)
-
 ### Random User API Integration
 
-* Demo: http://elm-playground.maciejsmolinski.com/randomuser/
+* Demo: https://elm-playground.surge.sh/randomuser/
 * Installation:
   * Clone the repository with `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground/randomuser`
   * Install all dependencies: `npm install`
@@ -33,19 +31,15 @@ Demos: http://elm-playground.maciejsmolinski.com/
     * To watch for filechanges and re-build run: `npm run dev` instead
 * When done open the project with `npm run open` or simply open `index.html` in your browser
 
-![](https://cdn.pbrd.co/images/GLAJbvI.gif)
-
 ### Simple Todo List
 
-* Demo: http://elm-playground.maciejsmolinski.com/todo/
+* Demo: https://elm-playground.surge.sh/todo/
 * Installation:
   * Clone the repository with `git clone https://github.com/maciejsmolinski/elm-playground.git && cd elm-playground/todo`
   * Install all dependencies: `npm install`
   * Build the project: `npm run build`
     * To watch for filechanges and re-build run: `npm run dev` instead
 * When done open the project with `npm run open` or simply open `index.html` in your browser
-
-![](https://cdn.pbrd.co/images/GLAw54g.gif)
 
 ## Purpose of the repository
 
